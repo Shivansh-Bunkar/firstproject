@@ -1,7 +1,7 @@
 import React from 'react'
-import Home from './home'
-import Veg from './veg'
-import Nonveg from './nonveg'
+import Home from "./Home";
+import Veg from "./Veg";
+import Nonveg from "./Nonveg";
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
 import './App.css'
 function App() {
