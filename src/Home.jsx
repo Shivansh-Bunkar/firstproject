@@ -1,10 +1,13 @@
 import React from "react";
 import "./home.css";
+import HeroSection from "./HeroSection";
+import Highlight from "./Highlight";
+import Features from "./Features";
 
 function Home() {
     return (
         <>
-            <h1>Food-Web</h1>
+            <h1 id='h1'>Food-Web</h1>
             <div className="home">
                 <h1>Food Menu Application</h1>
                 <p>
@@ -21,6 +24,10 @@ function Home() {
                     </ul>
                 </div>
             </div>
+
+            {/* <HeroSection /> */}
+            <Highlight />
+            <Features />
         </>
     );
 }

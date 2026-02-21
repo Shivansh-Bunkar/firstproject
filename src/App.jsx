@@ -2,13 +2,20 @@ import React from 'react'
 import Home from "./Home";
 import Veg from "./Veg";
 import Nonveg from "./Nonveg";
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
-import './App.css'
-// import Contact from './Contact';
+import Contact from "./Contact";
 import Cart from './cart';
+import HeroSection from './HeroSection';
+import Highlight from './Highlight';
+import Features from './Features';
+import './App.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faDrumstickBite, faBowlRice, faHome } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import Footer from './Footer';
+
+
+
 function App() {
 
   const dispatch = useDispatch();
@@ -20,26 +27,26 @@ function App() {
     <>
 
       <BrowserRouter>
+
         <div className='menu-bar'>
           <div className='logo'><Link to="/">Zaika-Rasoi</Link></div>
-          <Link to="/"><FontAwesomeIcon icon={faHome} /> Home</Link>
+          <Link to="/Home"><FontAwesomeIcon icon={faHome} /> Home</Link>
           <Link to="/Veg"><FontAwesomeIcon icon={faBowlRice} /> Veg-Items</Link>
           <Link to="/Nonveg"><FontAwesomeIcon icon={faDrumstickBite} /> NonVeg-Itmes</Link>
-          {/* <Link to="/Contact">Contact Us</Link> */}
+          <Link to="/Contact">Contact Us</Link>
           <Link to="/Cart"><FontAwesomeIcon icon={faShoppingCart} /> Cart {totalQuantity} </Link>
         </div>
-
         <Routes>
           <Route path="/" element={<Home />} />   {/* default */}
           <Route path="/Home" element={<Home />} />
           <Route path="/Veg" element={<Veg />} />
           <Route path="/Nonveg" element={<Nonveg />} />
-          {/* <Route path="/Contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
           <Route path="/Cart" element={<Cart />} />
         </Routes>
-
-
       </BrowserRouter >
+
+      <Footer />
     </>
   )
 }

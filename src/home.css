@@ -6,19 +6,33 @@ body {
     background: #f9f9f9;
     margin: 0;
     padding: 0;
+    height: 70vh;
+    background: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d") center/cover no-repeat;
+    position: relative;
+    color: white;
+
 }
 
+#h1 {
+    color: whitesmoke;
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(199, 194, 194, 0.8);
+}
 
 .home {
+
     text-align: center;
     padding: 60px 20px;
 }
 
 .home h1 {
-    font-size: 40px;
-    color: #222;
-    margin-bottom: 15px;
+    color: black;
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
+
 
 .home p {
     font-size: 18px;
