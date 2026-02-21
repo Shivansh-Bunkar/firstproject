@@ -5,7 +5,6 @@ function Home() {
     return (
         <>
             <h1>Food-Web</h1>
-            <a href="https://share.google/cZrSvxPAcbnhAt05R"></a>
             <div className="home">
                 <h1>Food Menu Application</h1>
                 <p>
@@ -22,7 +21,6 @@ function Home() {
                     </ul>
                 </div>
             </div>
-            <a href="https://share.google/cZrSvxPAcbnhAt05R">Google</a>
         </>
     );
 }

@@ -49,3 +49,10 @@ body {
   padding-top: 70px;
   font-family: sans-serif;
 }
+
+.menu-bar .logo a {
+  margin-right: auto;
+  color: goldenrod;
+  font-size: 1.8rem;
+  font-weight: 700;
+}

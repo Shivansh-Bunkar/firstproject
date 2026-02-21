@@ -1,8 +1,7 @@
 /* Container */
 .nonveg-items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* change 3 to 4 if needed */
+    grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     padding: 30px;
     margin-top: 20px;
@@ -50,4 +49,18 @@
     color: #666;
     padding: 0 15px 18px;
     line-height: 1.5;
+}
+
+button {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
 }
