@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { coupons } from "./coupon";
+import { coupons } from "./Coupon";
 
 const couponSlice = createSlice({
     name: "coupon",
