@@ -44,7 +44,7 @@ function Footer() {
                     <h3>Contact</h3>
                     <ul className="contact-info">
                         <li><strong>Name:</strong> <b>Shivansh Kumar Bunkar</b> </li>
-                        <li><strong>Email:</strong> <u> <a href="mailto:shivansh@example.com"></a><i>shivanshbunkar12345@gmail.com</i> </u> </li>
+                        <li><strong>Email:</strong> <u> <a href="mailto:shivanshbunkar12345@gmail.com"></a><i>shivanshbunkar12345@gmail.com</i> </u> </li>
                         <li><strong>Phone:</strong><b> +91 73899 59273 </b></li>
                         <li><strong>Location:</strong> <b> India, Telangana, Hyderabad </b></li>
                     </ul>

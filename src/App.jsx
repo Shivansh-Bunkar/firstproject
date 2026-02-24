@@ -13,6 +13,7 @@ import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faDrumstickBite, faBowlRice, faHome } from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
 
       <BrowserRouter>
 

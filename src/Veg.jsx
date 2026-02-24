@@ -2,6 +2,8 @@ import React from 'react'
 import './veg.css'
 import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
+import { useState } from 'react';
+import Toast from './Toast';
 
 function Veg() {
 
@@ -36,9 +38,17 @@ function Veg() {
         { id: 25, name: "Jeera Rice", image: "jeera-rice.jpg", price: 140, description: "Basmati rice flavored with cumin seeds." }
     ];
 
+    const [showToast, setShowToast] = React.useState(false);
+
     return (
         <>
             <h1>Veg-Page</h1>
+            {showToast && (
+                <div className="toast-box">
+                    🛒 Item added to cart!
+                </div>
+            )}
+
             <div className="veg-items">
                 {vegItems.map(item => (
                     <div key={item.id} className="veg-item">
@@ -46,12 +56,22 @@ function Veg() {
                         <h2>{item.name}</h2>
                         <p>Price: ₹{item.price}</p>
                         <p>{item.description}</p>
-                        <button onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
+
+                        <button
+                            onClick={() => {
+                                dispatch(addToCart(item));  // fixed syntax
+                                setShowToast(true);
+                                setTimeout(() => setShowToast(false), 2000);
+                            }}
+                        >
+                            Add to Cart
+                        </button>
                     </div>
                 ))}
             </div>
         </>
     )
+
 }
 
 export default Veg;
