@@ -20,7 +20,7 @@ function Features() {
             </div>
 
             <div className="circle">
-                <button className="feature-button" onClick={() => window.location.href = "/contact"}>
+                <button className="feature-button" onClick={() => window.location.href = "/Contact"}>
                     <span>📞</span>
                     <p>Contact</p>
                 </button>

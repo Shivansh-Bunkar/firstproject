@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
 import { useState } from 'react';
 import Toast from './Toast';
+import toast from 'react-hot-toast';
 
 function Veg() {
 
@@ -59,9 +60,21 @@ function Veg() {
 
                         <button
                             onClick={() => {
-                                dispatch(addToCart(item));  // fixed syntax
-                                setShowToast(true);
-                                setTimeout(() => setShowToast(false), 2000);
+                                dispatch(addToCart(item));
+
+                                toast.success(`${item.name} added to cart!`, {
+                                    duration: 2000,
+                                    style: {
+                                        fontSize: "25px",
+                                        padding: "20px 24px",
+                                        minWidth: "400px",
+                                        borderRadius: "10px",
+                                    },
+                                    iconTheme: {
+                                        primary: "#4ade80",
+                                        secondary: "#fff",
+                                    },
+                                });
                             }}
                         >
                             Add to Cart

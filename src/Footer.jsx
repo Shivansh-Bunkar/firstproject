@@ -44,9 +44,24 @@ function Footer() {
                     <h3>Contact</h3>
                     <ul className="contact-info">
                         <li><strong>Name:</strong> <b>Shivansh Kumar Bunkar</b> </li>
-                        <li><strong>Email:</strong> <u> <a href="mailto:shivanshbunkar12345@gmail.com"></a><i>shivanshbunkar12345@gmail.com</i> </u> </li>
-                        <li><strong>Phone:</strong><b> +91 73899 59273 </b></li>
-                        <li><strong>Location:</strong> <b> India, Telangana, Hyderabad </b></li>
+                        <li><strong>Email:</strong> <a href="mailto:shivanshbunkar12345@gmail.com">shivanshbunkar12345@gmail.com</a></li>
+                        <li>
+                            <strong>Contact:</strong>
+                            <b style={{ cursor: "pointer" }} onClick={() => {
+                                navigator.clipboard.writeText("+91 9876543210");
+                                alert("Number copied!");
+                            }}>
+                                +91 9876543210
+                            </b>
+                        </li>
+                        <li>
+                            <strong>Location:</strong>
+                            <b>
+                                <a href="https://www.google.com/maps?q=India,+Telangana,+Hyderabad" target="_blank" rel="noopener">
+                                    India, Telangana, Hyderabad
+                                </a>
+                            </b>
+                        </li>
                     </ul>
                 </div>
             </div>

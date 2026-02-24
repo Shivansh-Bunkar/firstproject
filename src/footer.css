@@ -41,6 +41,12 @@
     cursor: default;
 }
 
+.contact-info a {
+    color: #282424;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
 .footer-bottom {
     text-align: center;
     padding: 15px;

@@ -2,6 +2,8 @@ import React from 'react'
 import './nonveg.css'
 import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
+import toast from 'react-hot-toast';
+
 
 function Nonveg() {
 
@@ -40,7 +42,27 @@ function Nonveg() {
                         <h2>{item.name}</h2>
                         <p>Price: ₹{item.price}</p>
                         <p>{item.description}</p>
-                        <button onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
+                        <button
+                            onClick={() => {
+                                dispatch(addToCart(item));
+
+                                toast.success(`${item.name} added to cart!`, {
+                                    duration: 2000,
+                                    style: {
+                                        fontSize: "25px",
+                                        padding: "20px 24px",
+                                        minWidth: "400px",
+                                        borderRadius: "10px",
+                                    },
+                                    iconTheme: {
+                                        primary: "#4ade80",
+                                        secondary: "#fff",
+                                    },
+                                });
+                            }}
+                        >
+                            Add to Cart
+                        </button>
                     </div>
                 ))}
             </div>

@@ -31,21 +31,22 @@ function Cart() {
 
     return (
         <>
-            <h1>Your Cart</h1>
-
             {items.length === 0 ? (
-                <p>Your cart is empty.</p>
+                <h1>Your cart is empty.</h1>
             ) : (
                 <>
-                    <button
-                        onClick={() => {
-                            dispatch(clearCart());
-                            setDiscPercent(0);
-                            dispatch(removeCoupon());
-                        }}
-                    >
-                        Clear Cart
-                    </button>
+                    <h1>Your Cart</h1>
+                    <div className="clear">
+                        <button
+                            onClick={() => {
+                                dispatch(clearCart());
+                                setDiscPercent(0);
+                                dispatch(removeCoupon());
+                            }}
+                        >
+                            Clear Cart
+                        </button>
+                    </div>
 
                     <div className="cart-items">
                         {items.map(item => (

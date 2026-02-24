@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f9f9f9;
+    background: #785973;
     margin: 0;
     padding: 0;
     height: 70vh;
@@ -43,7 +43,7 @@ body {
 }
 
 .highlight-box {
-    background: #ffffff;
+    background: #8c7e7e;
     max-width: 500px;
     margin: auto;
     padding: 25px;

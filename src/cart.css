@@ -4,6 +4,18 @@ h1 {
     box-shadow: #ddd 0px 2px 4px;
 }
 
+.clear button {
+    position: inherit;
+    top: auto;
+    right: inherit;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
 /* Cart container */
 .cart-items {
@@ -48,6 +60,13 @@ h1 {
     font-weight: bold;
     color: #e63946;
     margin: 5px 0;
+}
+
+.cart-item span {
+    font-size: 14px;
+    color: #666;
+    padding: 0 15px 18px;
+    line-height: 1.5;
 }
 
 /* Description */
