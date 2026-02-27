@@ -1,33 +1,43 @@
-body {
-  user-select: none;
-}
-
+/* ===== NAVBAR BASE ===== */
 .menu-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  z-index: 1000;
+  gap: 50px;
+  padding: 0 20px;
+
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
 }
 
+/* Logo */
+.menu-bar .logo a {
+  color: goldenrod;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Nav links */
 .menu-bar a {
   text-decoration: none;
   color: #fff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   position: relative;
-  padding: 6px 4px;
-  transition: 0.3s ease;
+  padding: 6px 8px;
+  transition: all 0.3s ease;
 }
 
+/* underline animation */
 .menu-bar a::after {
   content: "";
   position: absolute;
@@ -47,16 +57,36 @@ body {
   width: 100%;
 }
 
-/* Prevent content hiding behind fixed navbar */
+/* Prevent content hiding behind navbar */
 body {
   margin: 0;
-  padding-top: 70px;
+  padding-top: 60px;
+  /* equals navbar height */
   font-family: sans-serif;
 }
 
-.menu-bar .logo a {
-  margin-right: auto;
-  color: goldenrod;
-  font-size: 1.8rem;
-  font-weight: 700;
+/* ===== MOBILE RESPONSIVE ===== */
+@media screen and (max-width: 768px) {
+  .menu-bar {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .menu-bar .logo a {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+
+  .menu-bar a {
+    font-size: 15px;
+    padding: 6px 0;
+  }
+
+  body {
+    padding-top: 120px;
+    /* bigger height after stacking */
+  }
 }

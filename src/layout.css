@@ -1,0 +1,20 @@
+.navbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.4s ease;
+}
+
+.navbar-wrapper.hide {
+    transform: translateY(-100%);
+}
+
+.page-content {
+    padding-top: var(--nav-height);
+}
+
+.page-content.full {
+    padding-top: 0;
+}

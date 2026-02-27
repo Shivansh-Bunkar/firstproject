@@ -1,209 +1,189 @@
-h1 {
-    color: whitesmoke;
-    font-weight: 200;
-    box-shadow: #ddd 0px 2px 4px;
+/* ================= PAGE BG ================= */
+.cart-page {
+    background: #f6f7fb;
+    min-height: 100vh;
+    padding: 20px 0 40px;
+    font-family: "Inter", "Segoe UI", sans-serif;
 }
 
-.clear button {
-    position: inherit;
-    top: auto;
-    right: inherit;
-    background-color: #e63946;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+
+h2 {
+    color: #2f2f2f;
+    /* graphite black */
 }
 
-/* Cart container */
+/* ================= CART LIST ================= */
 .cart-items {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    padding: 30px;
-    margin-top: 20px;
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 10px 20px;
 }
 
-/* Individual cart card */
+/* ================= ROW ITEM ================= */
 .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: #ffffff;
     border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    text-align: center;
+    padding: 14px 18px;
+    border: 1px solid #e4e6eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: 0.2s ease;
 }
 
 .cart-item:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-}
-
-/* Image */
-.cart-item img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-}
-
-/* Title */
-.cart-item h2 {
-    font-size: 20px;
-    margin: 15px 10px 5px;
-    color: #333;
-}
-
-/* Price */
-.cart-item .price {
-    font-weight: bold;
-    color: #e63946;
-    margin: 5px 0;
-}
-
-.cart-item span {
-    font-size: 14px;
-    color: #666;
-    padding: 0 15px 18px;
-    line-height: 1.5;
-}
-
-/* Description */
-.cart-item .desc {
-    font-size: 14px;
-    color: #666;
-    padding: 0 15px 15px;
-    line-height: 1.5;
-}
-
-/* Buttons */
-.cart-item button {
-    background-color: orange;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px auto 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 80%;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.cart-item button:hover {
-    background-color: darkorange;
-    transform: scale(1.03);
-}
-
-/* Quantity controls */
-.quantity-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.button-incdec {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background-color: #ffffff;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.button-incdec:hover {
-    background-color: #f5f5f5;
-    border-color: #bbb;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
     transform: translateY(-1px);
 }
 
-.button-incdec:active {
-    transform: scale(0.95);
-    background-color: #eee;
+/* Left section */
+.cart-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
 }
 
-.quantity-controls .quantity {
+.cart-item img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cart-left h2 {
     font-size: 16px;
-    font-weight: bold;
-    color: #333;
+    margin: 0;
+    color: #2f2f2f;
+    /* graphite black */
 }
 
-/* wrapper */
+#div-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+#div-cont input {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    /* light graphite */
+    width: 250px;
+    font-size: 14px;
+}
+
+#div-cont input:focus {
+    outline: none;
+    border-color: #4ade80;
+    /* green accent */
+}
+
+#div-cont button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #4ade80;
+    /* green accent */
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+
+
+}
+
+label {
+    font-size: 14px;
+    color: #111112;
+    /* graphite gray */
+}
+
+.price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #5a5a5a;
+    /* soft graphite */
+    margin-top: 3px;
+}
+
+/* ================= QUANTITY ================= */
 .quantity-controls {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin-top: 10px;
+    gap: 10px;
+    background: #f1f3f6;
+    padding: 6px 10px;
+    border-radius: 10px;
 }
 
-/* quantity number */
-.quantity-value {
-    min-width: 32px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    color: #333;
-}
-
-/* buttons */
 .button-incdec {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 6px;
-    border: 1px solid #ddd;
-    background: #fff;
-    font-size: 18px;
-    font-weight: bold;
+    border: none;
+    background: #dfe3e8;
+    /* light graphite */
+    color: #2c2c2c;
+    font-size: 16px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .button-incdec:hover {
-    background-color: #f2f2f2;
+    background: #cfd6dd;
 }
 
-.button-incdec:active {
-    transform: scale(0.95);
+.quantity-value {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    color: #2f2f2f;
 }
 
+/* Remove btn */
+.remove-btn {
+    background: #eceff3;
+    color: #333;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.remove-btn:hover {
+    background: #e0e4ea;
+}
+
+/* ================= BILL SUMMARY CARD ================= */
 .bill {
     max-width: 420px;
-    margin: 40px auto;
-    padding: 24px 28px;
+    margin: 40px auto 20px;
+    padding: 24px 26px;
     border-radius: 18px;
-    background: linear-gradient(145deg, #ffffff, #f3f4f6);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.bill:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .bill h2 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #111827;
+    margin-bottom: 18px;
+    font-size: 22px;
     font-weight: 600;
-    border-bottom: 2px solid #e5e7eb;
+    color: #2f2f2f;
+    border-bottom: 1px solid #ececec;
     padding-bottom: 10px;
 }
 
@@ -212,43 +192,52 @@ h1 {
     justify-content: space-between;
     font-size: 15px;
     margin: 10px 0;
-    color: #374151;
+    color: #4b5563;
 }
 
 .bill p:last-of-type {
     font-size: 18px;
     font-weight: 700;
-    color: #111827;
-    border-top: 2px dashed #e5e7eb;
+    color: #1f2937;
+    border-top: 1px dashed #e5e7eb;
     padding-top: 12px;
     margin-top: 14px;
 }
 
-/* Discount Buttons */
-.discount-buttons {
-    margin-top: 20px;
+/* ================= BOTTOM ACTION BUTTONS ================= */
+.checkout {
+    max-width: 420px;
+    margin: 15px auto;
     display: flex;
-    gap: 10px;
-    justify-content: space-between;
+    gap: 12px;
 }
 
-.discount-buttons button {
+.checkout button {
     flex: 1;
-    padding: 10px 12px;
+    padding: 12px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10px;
-    background: #111827;
-    color: white;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    background: #e4e7eb;
+    /* light graphite */
+    color: #2f2f2f;
+    transition: 0.2s ease;
 }
 
-.discount-buttons button:hover {
-    background: #2563eb;
+.checkout button:hover {
+    background: #d6dbe1;
     transform: translateY(-1px);
 }
 
-.discount-buttons button:active {
-    transform: scale(0.97);
+/* Payment box */
+.payment {
+    max-width: 420px;
+    margin: 10px auto 40px;
+    padding: 16px;
+    border-radius: 14px;
+    background: #f1f3f6;
+    border: 1px solid #e5e7eb;
+    color: #2f2f2f;
+    text-align: center;
 }

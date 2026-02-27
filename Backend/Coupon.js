@@ -12,7 +12,7 @@ export const coupons = [
         discount: 30, // 30% discount
     },
     {
-        code: "SAVE50",
-        discount: 50, // 50% discount
+        code: "SAVE40",
+        discount: 40, // 50% discount
     }
 ];

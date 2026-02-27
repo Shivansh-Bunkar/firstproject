@@ -63,8 +63,14 @@ function Veg() {
                                 dispatch(addToCart(item));
 
                                 toast.success(`${item.name} added to cart!`, {
-                                    duration: 2000,
+                                    duration: 500,
                                     style: {
+                                        progressBar: {
+
+                                            background: "green",
+                                        },
+                                        background: "#3ecb72",
+                                        color: "#fff",
                                         fontSize: "25px",
                                         padding: "20px 24px",
                                         minWidth: "400px",

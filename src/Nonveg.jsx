@@ -47,8 +47,13 @@ function Nonveg() {
                                 dispatch(addToCart(item));
 
                                 toast.success(`${item.name} added to cart!`, {
-                                    duration: 2000,
+                                    duration: 500,
                                     style: {
+                                        progressbar: {
+                                            background: "#4ade80",
+                                        },
+                                        background: "#333",
+                                        color: "#fff",
                                         fontSize: "25px",
                                         padding: "20px 24px",
                                         minWidth: "400px",
