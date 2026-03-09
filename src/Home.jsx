@@ -16,7 +16,7 @@ function Home() {
                 </p>
 
                 <div className="highlight-box">
-                    <h2>🍽️ What You’ll Find</h2>
+                    <h2><span>🍽️</span> What You’ll Find</h2>
                     <ul>
                         <li>✔ Variety of Veg & Non-Veg dishes</li>
                         <li>✔ Price details for each item</li>
@@ -26,8 +26,8 @@ function Home() {
             </div>
 
             {/* <HeroSection /> */}
-            <Highlight />
-            <Features />
+            {/* <Highlight />
+            <Features /> */}
         </>
     );
 }

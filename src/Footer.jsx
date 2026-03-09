@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./footer.css";
+import { faAddressBook, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
 
@@ -44,9 +46,9 @@ function Footer() {
                     <h3>Contact</h3>
                     <ul className="contact-info">
                         <li><strong>Name:</strong> <b>Shivansh Kumar Bunkar</b> </li>
-                        <li><strong>Email:</strong> <a href="mailto:shivanshbunkar12345@gmail.com">shivanshbunkar12345@gmail.com</a></li>
+                        <li><strong><FontAwesomeIcon icon={faEnvelope} /> Email:</strong> <a href="mailto:shivanshbunkar12345@gmail.com">shivanshbunkar12345@gmail.com</a></li>
                         <li>
-                            <strong>Contact:</strong>
+                            <strong><FontAwesomeIcon icon={faPhone} />Contact:</strong>
                             <b style={{ cursor: "pointer" }} onClick={() => {
                                 navigator.clipboard.writeText("+91 9876543210");
                                 alert("Number copied!");
@@ -55,7 +57,7 @@ function Footer() {
                             </b>
                         </li>
                         <li>
-                            <strong>Location:</strong>
+                            <strong> <FontAwesomeIcon icon={faAddressBook} />Location:</strong>
                             <b>
                                 <a href="https://www.google.com/maps?q=India,+Telangana,+Hyderabad" target="_blank" rel="noopener">
                                     India, Telangana, Hyderabad

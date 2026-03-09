@@ -2,7 +2,8 @@ import { Outlet, useLocation, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faDrumstickBite, faBowlRice, faHome, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faDrumstickBite, faBowlRice, faHome, faShoppingBag, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Layout = () => {
     const location = useLocation();
@@ -27,13 +28,15 @@ const Layout = () => {
                     <Link to="/Home"><FontAwesomeIcon icon={faHome} /> Home</Link>
                     <Link to="/Veg"><FontAwesomeIcon icon={faBowlRice} /> Veg-Items</Link>
                     <Link to="/Nonveg"><FontAwesomeIcon icon={faDrumstickBite} /> NonVeg-Items</Link>
-                    <Link to="/Contact">Contact Us</Link>
+                    <Link to="/Contact">
+                        <FontAwesomeIcon icon={faComment} />Contact Us</Link>
                     <Link to="/Cart">
                         <FontAwesomeIcon icon={faShoppingCart} /> Cart {totalQuantity}
                     </Link>
                     <Link to="/Orders">
                         <FontAwesomeIcon icon={faShoppingBag} /> Orders
                     </Link>
+                    <Link to="/Register"><FontAwesomeIcon icon={faUserPlus} />Register</Link>
                 </div>
             </div>
 

@@ -1,0 +1,90 @@
+/* Container for the form */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* full screen height */
+    background: #f0f2f5;
+    font-family: Arial, sans-serif;
+}
+
+/* Card-like form */
+.card-form {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+/* Inputs styling */
+.card-form input {
+    width: 90%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.card-form input:focus {
+    border-color: #007bff;
+}
+
+/* Buttons styling */
+.card-form button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+.card-form button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Password container with icon */
+.password-container {
+    position: relative;
+    display: flex;
+    width: 93%;
+    align-items: center;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.password-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.password-container svg {
+    cursor: pointer;
+    color: #555;
+    margin-left: 8px;
+}
+
+/* Optional: responsive adjustments */
+@media (max-width: 400px) {
+    .card-form {
+        width: 90%;
+        padding: 20px;
+    }
+}

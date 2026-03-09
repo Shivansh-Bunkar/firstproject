@@ -44,7 +44,7 @@ body {
     line-height: 1.7;
 }
 
-/* Highlight Card */
+/* Highlight Card (your existing) */
 .highlight-box {
     background: white;
     max-width: 520px;
@@ -61,10 +61,30 @@ body {
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
 }
 
+/* H2 Styling */
 .highlight-box h2 {
     text-align: center;
     margin-bottom: 18px;
     color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* spacing between icon and text */
+}
+
+/* Emoji Icon in H2 */
+.highlight-box h2 span.icon {
+    display: inline-block;
+    /* required for transform */
+    font-size: 28px;
+    /* default size */
+    transition: transform 0.3s ease;
+}
+
+.highlight-box h2:hover span.icon {
+    transform: scale(1.5);
+    /* grows 1.5x on hover */
 }
 
 /* Feature List */

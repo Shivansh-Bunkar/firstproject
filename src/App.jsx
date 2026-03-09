@@ -10,6 +10,7 @@ import Footer from './Footer';
 import { Toaster } from 'react-hot-toast';
 import Layout from './Layout';
 import Orders from './Orders';
+import Register from './Register';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Orders" element={<Orders />} />
+            <Route path="/Register" element={<Register />} />
           </Route>
         </Routes>
       </BrowserRouter>

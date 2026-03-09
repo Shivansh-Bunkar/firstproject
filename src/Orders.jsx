@@ -9,12 +9,18 @@ function Orders() {
 
     return (
         <>
-
-            < div className="orders-container">
+            <div className="orders-container">
                 <h1 className="orders-title">Orders Page</h1>
 
                 {orders.length === 0 ? (
-                    <p className="orders-empty">No orders found.</p>
+                    <div className="orders-empty">
+                        <div className="dots-loader">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p>No orders yet. Stay tuned!</p>
+                    </div>
                 ) : (
                     <div className="orders-list">
                         {orders.map(order => (
@@ -36,9 +42,8 @@ function Orders() {
                     </div>
                 )}
             </div>
-
-
         </>
     );
+
 }
 export default Orders;
