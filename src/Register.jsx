@@ -18,6 +18,7 @@ function Register() {
         const isDuplicate = existingUsers.some(user => user.email === data.email);
         if (isDuplicate) {
             alert("User with this email already exists!");
+
             return;
         }
 
@@ -25,6 +26,7 @@ function Register() {
         localStorage.setItem("users", JSON.stringify(existingUsers));
 
         alert("Registration Successful!");
+        navigate("/Login");
         reset();
     };
 

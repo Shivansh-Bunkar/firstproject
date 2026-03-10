@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import "./login.css";
+import toast from 'react-hot-toast';
 
 function Login() {
 
@@ -21,11 +22,14 @@ function Login() {
         reset();
 
         if (validUser) {
-            alert('Login successful');
+
+            localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+
+            toast.success(`Welcome ${validUser.name}! Login successful 🎉`);
             navigate("/Home");
         }
         else {
-            alert("Login faill.....! regoster if you are a new user.. ")
+            alert("Login faill.....! Register if you are a new user.. ")
             navigate("/Register");
         }
     }
@@ -53,7 +57,7 @@ function Login() {
                         {...register("password", { required: true })}
                     />
 
-                    <button className="login-btn" type='submit'>
+                    <button className="login-btn" type='submit' >
                         Login
                     </button>
 

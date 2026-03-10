@@ -166,7 +166,7 @@ function Cart() {
 
                             <button
                                 onClick={() => {
-                                    dispatch(applyCoupon(input)); // ❌ removed removeFromCart()
+                                    dispatch(applyCoupon(input));
                                     setInput("");
                                 }}
                             >

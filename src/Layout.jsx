@@ -25,6 +25,8 @@ const Layout = () => {
         0
     );
 
+    const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
 
 
     return (
@@ -64,13 +66,39 @@ const Layout = () => {
                             <FontAwesomeIcon icon={faShoppingBag} /> Orders
                         </Link>
 
-                        <Link to="/Register">
-                            <FontAwesomeIcon icon={faUserPlus} /> Register
-                        </Link>
+                        {loggedUser ? (
+                            <>
+                                <h4>Hello {loggedUser.name} 👋</h4>
 
-                        <Link to="/Login">
-                            Login
-                        </Link>
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("loggedInUser");
+                                        window.location.reload();
+                                    }}
+                                    style={{
+                                        background: "linear-gradient(90deg,red,orange,red)",
+                                        border: "none",
+                                        padding: "6px 14px",
+                                        borderRadius: "6px",
+                                        color: "white",
+                                        fontWeight: "600",
+                                        cursor: "pointer",
+                                        marginLeft: "10px",
+                                        transition: "0.3s"
+                                    }}
+                                >
+                                    Logout
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/Register">
+                                    <FontAwesomeIcon icon={faUserPlus} /> Register
+                                </Link>
+
+                                <Link to="/Login">Login</Link>
+                            </>
+                        )}
 
                     </div>
 

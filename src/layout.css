@@ -18,3 +18,17 @@
 .page-content.full {
     padding-top: 0;
 }
+
+.user-name {
+    color: white;
+    font-weight: 600;
+}
+
+.logout-btn {
+    background: #ff4d4d;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
