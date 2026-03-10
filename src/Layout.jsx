@@ -17,7 +17,7 @@ const Layout = () => {
 
     const location = useLocation();
     const hideNav = false;
-    const navigate = usenavigate();
+    const navigate = useNavigate();
 
     const items = useSelector(state => state.cart.items);
 
