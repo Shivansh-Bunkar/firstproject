@@ -1,8 +1,5 @@
 import React from "react";
 import "./home.css";
-import HeroSection from "./HeroSection";
-import Highlight from "./Highlight";
-import Features from "./Features";
 
 function Home() {
     return (
@@ -16,7 +13,8 @@ function Home() {
                 </p>
 
                 <div className="highlight-box">
-                    <h2><span>🍽️</span> What You’ll Find</h2>
+
+                    <h2>What You will Find</h2>
                     <ul>
                         <li>✔ Variety of Veg & Non-Veg dishes</li>
                         <li>✔ Price details for each item</li>
@@ -25,9 +23,6 @@ function Home() {
                 </div>
             </div>
 
-            {/* <HeroSection /> */}
-            {/* <Highlight />
-            <Features /> */}
         </>
     );
 }

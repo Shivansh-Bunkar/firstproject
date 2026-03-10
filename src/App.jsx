@@ -11,15 +11,20 @@ import { Toaster } from 'react-hot-toast';
 import Layout from './Layout';
 import Orders from './Orders';
 import Register from './Register';
+import Login from './Login';
 
 function App() {
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
-
       <BrowserRouter>
+
+        <Toaster position="top-right" reverseOrder={false} />
+
         <Routes>
+
+          {/* Layout wrapper */}
           <Route element={<Layout />}>
+
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Veg" element={<Veg />} />
@@ -28,11 +33,15 @@ function App() {
             <Route path="/Cart" element={<Cart />} />
             <Route path="/Orders" element={<Orders />} />
             <Route path="/Register" element={<Register />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route path="/Login" element={<Login />} />
 
-      <Footer />
+          </Route>
+
+        </Routes>
+
+        <Footer />
+
+      </BrowserRouter>
     </>
   )
 }
