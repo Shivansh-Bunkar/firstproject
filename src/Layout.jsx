@@ -1,4 +1,4 @@
-import { Outlet, useLocation, Link } from "react-router-dom";
+import { Outlet, useLocation, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,7 @@ const Layout = () => {
 
     const location = useLocation();
     const hideNav = false;
+    const navigate = usenavigate();
 
     const items = useSelector(state => state.cart.items);
 
@@ -74,6 +75,7 @@ const Layout = () => {
                                     onClick={() => {
                                         localStorage.removeItem("loggedInUser");
                                         window.location.reload();
+                                        navigate("/");
                                     }}
                                     style={{
                                         background: "linear-gradient(90deg,red,orange,red)",
