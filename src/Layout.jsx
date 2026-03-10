@@ -74,7 +74,7 @@ const Layout = () => {
                                 <button
                                     onClick={() => {
                                         localStorage.removeItem("loggedInUser");
-                                        window.location.reload();
+                                       
                                         navigate("/Home");
                                     }}
                                     style={{
