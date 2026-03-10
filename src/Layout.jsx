@@ -75,7 +75,7 @@ const Layout = () => {
                                     onClick={() => {
                                         localStorage.removeItem("loggedInUser");
                                         window.location.reload();
-                                        navigate("/");
+                                        navigate("/Home");
                                     }}
                                     style={{
                                         background: "linear-gradient(90deg,red,orange,red)",
