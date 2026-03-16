@@ -1,5 +1,5 @@
-import { Outlet, useLocation, Link, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -11,45 +11,39 @@ import {
     faShoppingBag,
     faComment,
     faUserPlus,
-
     faHotel
 } from '@fortawesome/free-solid-svg-icons';
 
 function Layout() {
-
-    // const location = useLocation();
-    const hideNav = false;
     const navigate = useNavigate();
-
     const items = useSelector(state => state.cart.items);
+    const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
-    const totalQuantity = items.reduce(
-        (total, item) => total + item.quantity,
-        0
-    );
-    const [isOpen, setISOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-
+    const handleLogout = () => {
+        localStorage.removeItem("loggedInUser");
+        setIsOpen(false);
+        navigate("/Home");
+        window.location.reload(); // Refresh to update the navbar state
+    };
 
     return (
         <>
             <div className="navbar-wrapper">
-
                 <nav className="menu-bar">
-
                     <div className="logo">
                         <Link to="/">Zaika-Rasoi</Link>
                     </div>
 
                     <div className="nav-links">
-
                         <Link to="/Home">
                             <FontAwesomeIcon icon={faHome} /> Home
                         </Link>
 
                         <Link to="/Reastaurant">
-                            <FontAwesomeIcon icon={faHotel} />Reastaurant
+                            <FontAwesomeIcon icon={faHotel} /> Restaurant
                         </Link>
 
                         <Link to="/Veg">
@@ -65,94 +59,76 @@ function Layout() {
                         </Link>
 
                         <Link to="/Cart">
-                            <FontAwesomeIcon icon={faShoppingCart} />
-                            Cart ({totalQuantity})
+                            <FontAwesomeIcon icon={faShoppingCart} /> Cart ({totalQuantity})
                         </Link>
 
                         <Link to="/Orders">
                             <FontAwesomeIcon icon={faShoppingBag} /> Orders
                         </Link>
-
                         {loggedUser ? (
-                            <>
+                            <div className="user-menu-container">
+                                <button
+                                    onClick={() => setIsOpen(!isOpen)}
+                                    style={{ backgroundColor: 'red', color: 'white' }}
+                                >
+                                    👤 {loggedUser.name} {isOpen ? '▲' : '▼'}
+                                </button>
 
-                                <button onClick={() => {
-                                    setISOpen(!isOpen)
+                                {isOpen && (
+                                    <div className="user-dropdown-menu">
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => {
+                                                navigate(`/user/${loggedUser.name}`);
+                                                setIsOpen(false);
+                                            }}
+                                        >
+                                            View Profile
+                                        </button>
 
-                                }} style={{ color: 'White', backgroundColor: 'red' }}>👤 {loggedUser.name}</button>
-
-                                {isOpen && <>
-                                    <div style={{
-                                        position: 'relative',
-                                        top: '100%',     // Places it directly below the button
-                                        right: 0,        // Aligns it to the right edge
-
-                                        marginTop: '8px',
-                                        backgroundColor: 'greenyellow',
-                                        boxShadow: '0px 8px 16px rgba(0,0,0,0.1)', // Nice shadow
-                                        borderRadius: '4px',
-                                        border: '1px solid #ddd',
-                                        display: 'flex',
-                                        flexDirection: 'column', // Stacks items vertically
-                                        minWidth: '150px',
-                                        overflow: 'hidden',
-                                        zIndex: 1000     // Ensures it stays on top of everything
-                                    }}>
-                                        <button onClick={() => {
-                                            navigate("/user/{loggedUser.name}")
-                                        }} style={{ fontSize: "20px", fontFamily: "-apple-system", color: 'black', backgroundColor: 'goldenrod' }}>View Profile</button>
-
-
+                                        <div className="dropdown-divider"></div>
 
                                         <button
-                                            onClick={() => {
-                                                localStorage.removeItem("loggedInUser");
-
-                                                navigate("/Home");
-                                            }}
-                                            style={{
-                                                backgroundColor: "goldenrod",
-                                                border: "none",
-                                                padding: "6px 14px",
-                                                borderRadius: "6px",
-                                                color: "red",
-                                                fontWeight: "600",
-                                                cursor: "pointer",
-                                                marginLeft: "10px",
-                                                transition: "0.3s"
-                                            }}
+                                            className="dropdown-item logout-btn"
+                                            onClick={handleLogout}
                                         >
                                             Logout
                                         </button>
                                     </div>
-                                </>
-                                }
-                            </>
+                                )}
+                            </div>
                         ) : (
                             <>
-                                <Link to="/Register">
-                                    <FontAwesomeIcon icon={faUserPlus} /> Register
-                                </Link>
-
+                                <Link to="/Register"><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
                                 <Link to="/Login">Login</Link>
                             </>
                         )}
 
                     </div>
-                    <Link to="/Addition" >Addition</Link>
 
+                    <Link to="/Addition">Addition</Link>
                 </nav>
-
-
-
-
             </div>
 
-            <div className={`page-content ${hideNav ? "full" : ""}`}>
+            <div className="page-content">
                 <Outlet />
             </div>
         </>
     );
+}
+
+// Reusable style for dropdown items
+const dropdownButtonStyle = {
+    padding: '12px 16px',
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    textAlign: 'left',
+    width: '100%',
+    fontSize: '15px',
+    color: 'black',
+    fontFamily: 'inherit',
+    transition: '0.2s'
 };
 
 export default Layout;
