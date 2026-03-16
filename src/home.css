@@ -1,90 +1,99 @@
-/* body css */
+/* =========================
+   BODY
+   ========================= */
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
     margin: 0;
     padding: 0;
-    background: #f9fafb;
+    min-height: 100%;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    /* warm food palette */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Home Section Container */
+/* HOME & FORM CONTAINER */
+.home,
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   HOME SECTION CONTAINER
+   ========================= */
 .home {
     min-height: calc(100vh - 60px);
-    /* full screen minus navbar */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-
     padding: 60px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+    background: linear-gradient(135deg, #ffe5d9, #ffd6a5);
+    /* soft appetizing gradient */
     color: #1f2937;
 }
 
-/* Main Heading */
+/* MAIN HEADING */
 .home h1 {
     font-size: 44px;
     margin-bottom: 20px;
-    color: #111827;
+    color: #b91c1c;
+    /* warm red for food branding */
     letter-spacing: 1px;
+    text-align: center;
 }
 
-/* Subtitle */
+/* SUBTITLE */
 .home p {
     font-size: 18px;
     color: #4b5563;
     max-width: 720px;
     margin: 0 auto 40px;
     line-height: 1.7;
+    text-align: center;
 }
 
-/* Highlight Card (your existing) */
+/* =========================
+   HIGHLIGHT CARD
+   ========================= */
 .highlight-box {
-    background: white;
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    /* soft, appetizing gradient */
     max-width: 520px;
     width: 100%;
+    margin: 0 auto;
     padding: 30px 28px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .highlight-box:hover {
     transform: translateY(-6px);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* H2 Styling */
 .highlight-box h2 {
     text-align: center;
     margin-bottom: 18px;
-    color: #111827;
+    color: #b91c1c;
+    /* match heading red */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    /* spacing between icon and text */
 }
 
-/* Emoji Icon in H2 */
+/* Emoji/Icon in H2 */
 .highlight-box h2 span.icon {
     display: inline-block;
-    /* required for transform */
     font-size: 28px;
-    /* default size */
     transition: transform 0.3s ease;
 }
 
 .highlight-box h2:hover span.icon {
     transform: scale(1.5);
-    /* grows 1.5x on hover */
 }
 
 /* Feature List */
@@ -98,14 +107,16 @@ body {
     padding: 10px 0;
     font-size: 16px;
     color: #374151;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #ffe5d9;
 }
 
 .highlight-box li:last-child {
     border-bottom: none;
 }
 
-/* Mobile Responsive */
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
 @media (max-width: 768px) {
     .home {
         padding: 40px 16px;

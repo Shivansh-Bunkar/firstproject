@@ -14,6 +14,11 @@ function Register() {
 
     let submitLogics = (data) => {
 
+        const newUser = {
+            id: Date.now(),   // unique id
+            ...data
+        };
+
         let existingUsers = JSON.parse(localStorage.getItem("users")) || [];
         const isDuplicate = existingUsers.some(user => user.email === data.email);
         if (isDuplicate) {

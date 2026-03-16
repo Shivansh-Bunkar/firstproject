@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './nonveg.css'
 import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
@@ -32,12 +32,21 @@ function Nonveg() {
         { id: 44, name: "Chicken Vindaloo", image: "chicken-vindaloo.jpg", price: 300, description: "Spicy Goan-style chicken curry with tangy flavors." },
         { id: 45, name: "Fish Tikka", image: "fish-tikka.jpg", price: 290, description: "Grilled fish marinated in spices and yogurt." }
     ];
+
+    const [currentPage, setCurrentPge] = useState(1);
+    const itemperpage = 8;
+    const totalPage = Math.ceil(nonVegItems.length / itemperpage);
+    const indexOfLastItem = currentPage * itemperpage;
+    const indexOfFirstItem = indexOfLastItem - itemperpage;
+    const [showToast, setShowToast] = React.useState(false);
+    const currentItem = nonVegItems.slice(indexOfFirstItem, indexOfLastItem);
+
     return (
         <>
             <h1>This is The Non-Veg Page</h1>
             <div className="nonveg-items">
-                {nonVegItems.map(item => (
-                    <div key={item.id} className="nonveg-item">
+                {currentItem.map((item, index) => (
+                    <div key={index} className="nonveg-item">
                         <img src={item.image} alt={item.name} />
                         <h2>{item.name}</h2>
                         <p>Price: ₹{item.price}</p>
@@ -70,6 +79,25 @@ function Nonveg() {
                         </button>
                     </div>
                 ))}
+            </div>
+            <div className="spec-button">
+                <button
+                    onClick={() => setCurrentPge(currentPage - 1)}
+                    disabled={currentPage === 1}>
+                    Previous
+                </button>
+                {Array.from({ length: totalPage }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentPge(index + 1)}>
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => setCurrentPge(currentPage + 1)}
+                    disabled={currentPage === totalPage}>
+                    Next
+                </button>
             </div>
         </>
     )

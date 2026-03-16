@@ -1,3 +1,6 @@
+/* =========================
+   NAVBAR WRAPPER
+   ========================= */
 .navbar-wrapper {
     position: fixed;
     top: 0;
@@ -5,30 +8,54 @@
     width: 100%;
     z-index: 1000;
     transition: transform 0.4s ease;
+    background-color: #1a1a1a;
+    /* dark navbar for contrast */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* subtle shadow */
 }
 
 .navbar-wrapper.hide {
     transform: translateY(-100%);
 }
 
+/* =========================
+   PAGE CONTENT
+   ========================= */
 .page-content {
-    padding-top: var(--nav-height);
+    padding-top: var(--nav-height, 60px);
+    /* fallback 60px if --nav-height not set */
 }
 
 .page-content.full {
     padding-top: 0;
 }
 
+/* =========================
+   USERNAME
+   ========================= */
 .user-name {
-    color: white;
+    color: #ffffff;
+    /* bright white for readability */
     font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* =========================
+   LOGOUT BUTTON
+   ========================= */
 .logout-btn {
-    background: #ff4d4d;
+    background: linear-gradient(90deg, #ff4d4d, #e60000);
+    /* vibrant red gradient */
     border: none;
     padding: 6px 12px;
     border-radius: 6px;
     color: white;
     cursor: pointer;
+    font-weight: 500;
+    transition: background-image 0.3s, transform 0.2s;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(90deg, #e60000, #cc0000);
+    transform: translateY(-2px);
 }

@@ -26,7 +26,7 @@ function Login() {
             localStorage.setItem("loggedInUser", JSON.stringify(validUser));
 
             toast.success(`Welcome ${validUser.name}! Login successful 🎉`);
-            navigate("/Home");
+            navigate(`/user/${validUser.id}`);
         }
         else {
             alert("Login faill.....! Register if you are a new user.. ")

@@ -38,8 +38,13 @@ function Veg() {
         { id: 24, name: "Samosa", image: "samosa.jpg", price: 25, description: "Crispy pastry filled with spicy potato mixture." },
         { id: 25, name: "Jeera Rice", image: "jeera-rice.jpg", price: 140, description: "Basmati rice flavored with cumin seeds." }
     ];
-
+    const [currentPage, setCurrentPge] = useState(1);
+    const itemperpage = 8;
+    const totalPage = Math.ceil(vegItems.length / itemperpage);
+    const indexOfLastItem = currentPage * itemperpage;
+    const indexOfFirstItem = indexOfLastItem - itemperpage;
     const [showToast, setShowToast] = React.useState(false);
+    const currentItem = vegItems.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
         <>
@@ -51,8 +56,8 @@ function Veg() {
             )}
 
             <div className="veg-items">
-                {vegItems.map(item => (
-                    <div key={item.id} className="veg-item">
+                {currentItem.map((item, index) => (
+                    <div key={index} className="veg-item">
                         <img src={item.image} alt={item.name} />
                         <h2>{item.name}</h2>
                         <p>Price: ₹{item.price}</p>
@@ -69,7 +74,7 @@ function Veg() {
 
                                             background: "green",
                                         },
-                                        background: "#3ecb72",
+                                        background: " linear - gradient(135deg, #ff7a18, #00c9a7);",
                                         color: "#fff",
                                         fontSize: "25px",
                                         padding: "20px 24px",
@@ -87,7 +92,27 @@ function Veg() {
                         </button>
                     </div>
                 ))}
-            </div>
+            </div >
+            <div className="spec-button">
+                <button onClick={() => setCurrentPge(currentPage - 1)}
+                    disabled={currentPage === 1}> Previous </button>
+                {
+                    Array.from({ length: totalPage }, (_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentPge(index + 1)}>
+                            {index + 1}
+                        </button>
+                    ))
+                }
+                <button onClick={() =>
+                    setCurrentPge(currentPage + 1)}
+                    disabled={currentPage === totalPage}
+
+
+                > Next </button>
+
+            </div >
         </>
     )
 

@@ -1,8 +1,8 @@
 /* ================= PAGE BG ================= */
 .cart-page {
-    background: #f6f7fb;
     min-height: 100vh;
-    padding: 20px 0 40px;
+    padding: 40px;
+    background: linear-gradient(135deg, #9b6f46, #4ee3ef);
     font-family: "Inter", "Segoe UI", sans-serif;
 }
 

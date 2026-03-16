@@ -1,4 +1,6 @@
-/* Container */
+/* =========================
+   NON-VEG ITEMS GRID
+   ========================= */
 .nonveg-items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -7,9 +9,35 @@
     margin-top: 20px;
 }
 
-/* Card */
+/* SPEC BUTTON CONTAINER */
+.spec-button {
+    display: flex;
+    justify-content: center;
+}
+
+.spec-button button {
+    background-color: #ffb347;
+    /* warm, food-related accent */
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.spec-button button:hover {
+    background-color: #ff7a18;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   NON-VEG ITEM CARD
+   ========================= */
 .nonveg-item {
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffe5d9, #ffd6a5);
+    /* appetizing gradient */
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -22,59 +50,63 @@
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
 }
 
-/* Image */
+/* IMAGE */
 .nonveg-item img {
     width: 100%;
     height: 170px;
     object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-/* Title */
+/* TITLE */
 .nonveg-item h2 {
     font-size: 20px;
     margin: 15px 10px 5px;
-    color: #333;
+    color: #b91c1c;
+    /* warm food title color */
 }
 
-/* Price */
+/* PRICE */
 .nonveg-item p:first-of-type {
     font-weight: bold;
     color: #e63946;
+    /* red accent for price */
     margin: 5px 0;
 }
 
-/* Description */
+/* DESCRIPTION */
 .nonveg-item p:last-of-type {
     font-size: 14px;
-    color: #666;
+    color: #374151;
     padding: 0 15px 18px;
     line-height: 1.5;
 }
 
+/* ADD TO CART / ORDER BUTTON */
 .nonveg-item button {
-    background-color: orange;
-    color: black;
+    background: linear-gradient(135deg, #ff7a18, #ffb347);
+    /* appetizing gradient */
+    color: white;
     border: none;
+    transition: all 0.3s ease;
     padding: 10px 20px;
     margin-bottom: 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     width: 80%;
-    justify-content: center;
-    align-items: center;
 }
 
+.nonveg-item button:hover {
+    background: linear-gradient(135deg, #ffb347, #ff7a18);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
 @media screen and (max-width: 768px) {
     .nonveg-items {
         grid-template-columns: repeat(2, 1fr);
         padding: 20px;
     }
-
-    @media (prefers-reduced-motion: no-preference) {
-        a:nth-of-type(2) .logo {
-            animation: logo-spin infinite 20s linear;
-        }
-    }
-
 }

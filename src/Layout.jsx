@@ -1,4 +1,4 @@
-import { Outlet, useLocation, Link } from "react-router-dom";
+import { Outlet, useLocation, Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,13 +10,16 @@ import {
     faHome,
     faShoppingBag,
     faComment,
-    faUserPlus
+    faUserPlus,
+
+    faHotel
 } from '@fortawesome/free-solid-svg-icons';
 
-const Layout = () => {
+function Layout() {
 
-    const location = useLocation();
+    // const location = useLocation();
     const hideNav = false;
+    const navigate = useNavigate();
 
     const items = useSelector(state => state.cart.items);
 
@@ -24,7 +27,7 @@ const Layout = () => {
         (total, item) => total + item.quantity,
         0
     );
-
+    const [isOpen, setISOpen] = useState(false);
     const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
 
@@ -43,6 +46,10 @@ const Layout = () => {
 
                         <Link to="/Home">
                             <FontAwesomeIcon icon={faHome} /> Home
+                        </Link>
+
+                        <Link to="/Reastaurant">
+                            <FontAwesomeIcon icon={faHotel} />Reastaurant
                         </Link>
 
                         <Link to="/Veg">
@@ -68,27 +75,58 @@ const Layout = () => {
 
                         {loggedUser ? (
                             <>
-                                <h4>Hello {loggedUser.name} 👋</h4>
 
-                                <button
-                                    onClick={() => {
-                                        localStorage.removeItem("loggedInUser");
-                                        window.location.reload();
-                                    }}
-                                    style={{
-                                        background: "linear-gradient(90deg,red,orange,red)",
-                                        border: "none",
-                                        padding: "6px 14px",
-                                        borderRadius: "6px",
-                                        color: "white",
-                                        fontWeight: "600",
-                                        cursor: "pointer",
-                                        marginLeft: "10px",
-                                        transition: "0.3s"
-                                    }}
-                                >
-                                    Logout
-                                </button>
+                                <button onClick={() => {
+                                    setISOpen(!isOpen)
+
+                                }} style={{ color: 'White', backgroundColor: 'red' }}>👤 {loggedUser.name}</button>
+
+                                {isOpen && <>
+                                    <div style={{
+                                        position: 'relative',
+                                        top: '100%',     // Places it directly below the button
+                                        right: 0,        // Aligns it to the right edge
+
+                                        marginTop: '8px',
+                                        backgroundColor: 'greenyellow',
+                                        boxShadow: '0px 8px 16px rgba(0,0,0,0.1)', // Nice shadow
+                                        borderRadius: '4px',
+                                        border: '1px solid #ddd',
+                                        display: 'flex',
+                                        flexDirection: 'column', // Stacks items vertically
+                                        minWidth: '150px',
+                                        overflow: 'hidden',
+                                        zIndex: 1000     // Ensures it stays on top of everything
+                                    }}>
+                                        <button onClick={() => {
+                                            navigate("/user/{loggedUser.name}")
+                                        }} style={{ fontSize: "20px", fontFamily: "-apple-system", color: 'black', backgroundColor: 'goldenrod' }}>View Profile</button>
+
+
+
+                                        <button
+                                            onClick={() => {
+                                                localStorage.removeItem("loggedInUser");
+
+                                                navigate("/Home");
+                                            }}
+                                            style={{
+                                                backgroundColor: "goldenrod",
+                                                border: "none",
+                                                padding: "6px 14px",
+                                                borderRadius: "6px",
+                                                color: "red",
+                                                fontWeight: "600",
+                                                cursor: "pointer",
+                                                marginLeft: "10px",
+                                                transition: "0.3s"
+                                            }}
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
+                                </>
+                                }
                             </>
                         ) : (
                             <>
@@ -101,8 +139,12 @@ const Layout = () => {
                         )}
 
                     </div>
+                    <Link to="/Addition" >Addition</Link>
 
                 </nav>
+
+
+
 
             </div>
 

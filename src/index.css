@@ -1,41 +1,69 @@
+/* =========================
+   GLOBAL RESET & BOX-SIZING
+   ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   ROOT VARIABLES & BODY
+   ========================= */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --line-height: 1.5;
+  --font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: rgb(255, 47, 68);
+  --text-color: rgba(255, 255, 255, 0.87);
+  --bg-color: #242424;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  width: 100%;
 }
 
+/* =========================
+   HEADINGS
+   ========================= */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* =========================
+   LINKS
+   ========================= */
+a {
+  font-weight: 500;
+  color: #646cff;
+  /* global link color */
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+a:hover {
+  color: #ff2f44;
+  /* hover color */
+}
+
+/* =========================
+   GENERIC BUTTONS
+   ========================= */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -43,9 +71,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #e6e0e0;
+  /* fallback light button */
+  color: #242424;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-image 0.25s, transform 0.2s;
 }
 
 button:hover {
@@ -57,17 +87,54 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+/* =========================
+   FORM ELEMENTS (OPTIONAL)
+   ========================= */
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--text-color);
+  background-color: #1a1a1a;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  transition: border-color 0.25s, background-color 0.25s;
+}
 
-  a:hover {
-    color: #747bff;
-  }
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #646cff;
+  outline: none;
+}
 
-  button {
-    background-color: #f9f9f9;
-  }
+/* =========================
+   UTILITY CLASSES (OPTIONAL)
+   ========================= */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 8px;
+}
+
+.mt-2 {
+  margin-top: 16px;
+}
+
+.mb-1 {
+  margin-bottom: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 16px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
