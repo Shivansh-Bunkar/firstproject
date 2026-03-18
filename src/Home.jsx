@@ -4,13 +4,14 @@ import "./home.css";
 function Home() {
     return (
         <>
-            <h1 id='h1'>Food-Web</h1>
+
             <div className="home">
-                <h1>Food Menu Application</h1>
-                <p>
-                    Browse delicious Veg and Non-Veg dishes using the menu above.
-                    Select a category from the navigation bar to explore full menu items.
-                </p>
+                <div> <h1 >Food-Web</h1>
+                    <h1>Food Menu Application</h1>
+                    <p>
+                        Browse delicious Veg and Non-Veg dishes using the menu above. <br />
+                        Select a category from the navigation bar to explore full menu items.
+                    </p></div>
 
                 <div className="highlight-box">
 

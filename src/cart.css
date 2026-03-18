@@ -14,7 +14,7 @@ h2 {
 
 /* ================= CART LIST ================= */
 .cart-items {
-    max-width: 900px;
+    width: auto;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -26,19 +26,30 @@ h2 {
 .cart-item {
     display: flex;
     align-items: center;
+    /* ✅ fixed */
     justify-content: space-between;
+
+    gap: auto;
+    /* ✅ spacing between elements */
+
     background: #ffffff;
     border-radius: 14px;
-    padding: 14px 18px;
+    padding: 16px 20px;
+
     border: 1px solid #e4e6eb;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    transition: 0.2s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+    transition: all 0.25s ease;
+
+    flex-wrap: wrap;
 }
 
 .cart-item:hover {
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-    transform: translateY(-1px);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* Left section */
 .cart-left {
@@ -49,10 +60,14 @@ h2 {
 }
 
 .cart-item img {
-    width: 64px;
+    width: 80px;
+    /* ✅ FIXED */
     height: 64px;
+
     border-radius: 10px;
     object-fit: cover;
+
+    border: 1px solid #eee;
 }
 
 .cart-left h2 {
@@ -70,6 +85,8 @@ h2 {
     gap: 6px;
     align-items: flex-start;
     margin-top: 20px;
+
+    flex-wrap: wrap;
 }
 
 #div-cont input {
@@ -175,6 +192,7 @@ label {
     background: #ffffff;
     border: 1px solid #e5e7eb;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
 }
 
 .bill h2 {

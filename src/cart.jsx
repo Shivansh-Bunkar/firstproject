@@ -8,6 +8,7 @@ import { QRCode } from "react-qr-code";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 import { addOrder } from "../Backend/OrderSlice";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
 
@@ -20,6 +21,8 @@ function Cart() {
     const [checkout, setCheckout] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState("");
     const [email, setEmail] = useState("");
+
+    const navigate = useNavigate();
 
     const gst = 0.18;
     const orderId = Math.floor(Math.random() * 1000000);
@@ -202,6 +205,7 @@ function Cart() {
                         <button onClick={() => {
                             handleCheckoutEmail();
                             dispatch(addOrder(purchaseDetails));
+                            navigate("/Orders");
                         }}>
                             Checkout Email
                         </button>

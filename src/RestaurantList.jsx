@@ -1,9 +1,14 @@
-import { faAnchor, faArrowUp, faLocation } from "@fortawesome/free-solid-svg-icons";
+import { faAnchor, faArrowUp, faCartFlatbed, faLocation, faRankingStar, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './restaurant.css';
-import UserDashboard from "./UserDashboard";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function RestaurantList() {
+
+    const navigate = useNavigate();
+
+
     const restaurants = [
         { id: 1, name: "Paradise Biryani", cuisine: "Biryani", rating: 4.5, costForTwo: 700, location: "Secunderabad" },
         { id: 2, name: "Bawarchi", cuisine: "Biryani", rating: 4.2, costForTwo: 600, location: "RTC X Roads" },
@@ -29,16 +34,16 @@ function RestaurantList() {
                     <div key={r.id} className="restaurant-card">
                         <h2 className="restaurant-title">{r.id}. {r.name}</h2>
                         <div className="restaurant-info">
-                            <span className="cuisine">{r.cuisine}</span>
+                            <span className="cuisine"><FontAwesomeIcon icon={faUtensils} />{r.cuisine}</span>
                             <span className="price">₹{r.costForTwo}</span>
                         </div>
                         <div className="restaurant-meta">
-                            <span className="rating">⭐ {r.rating}</span>
-                            <span className="location">📍 {r.location}</span>
+                            <span className="rating"><FontAwesomeIcon icon={faRankingStar} /> {r.rating}</span>
+                            <span className="location"><FontAwesomeIcon icon={faLocation} /> {r.location}</span>
                         </div>
                         <button className="book-btn" onClick={() => {
-                            alert(`Book a table at ${r.name}`);
-                            <UserDashboard />
+                            toast.success("Restaurant Selected successfully.. ")
+                            navigate("/BookingTable");
                         }
                         }>Book Now</button>
                     </div>

@@ -1,13 +1,15 @@
 /* =========================
    BODY
    ========================= */
+html,
 body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    min-height: 100%;
-    background: linear-gradient(135deg, #ffecd2, #fcb69f);
-    /* warm food palette */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
 }
 
 /* HOME & FORM CONTAINER */
@@ -22,14 +24,21 @@ body {
    HOME SECTION CONTAINER
    ========================= */
 .home {
-    min-height: calc(100vh - 60px);
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 60px 20px;
-    background: linear-gradient(135deg, #ffe5d9, #ffd6a5);
-    /* soft appetizing gradient */
-    color: #1f2937;
+    /* min-height: 100vh; */
+    background:
+        linear-gradient(to right, rgb(0, 0, 0) 30%, transparent),
+        url("https://images.unsplash.com/photo-1615719413546-198b25453f85");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #0d141d;
+    width: auto;
 }
 
 /* MAIN HEADING */
@@ -45,7 +54,7 @@ body {
 /* SUBTITLE */
 .home p {
     font-size: 18px;
-    color: #4b5563;
+    color: #c7d7f3;
     max-width: 720px;
     margin: 0 auto 40px;
     line-height: 1.7;
@@ -56,10 +65,11 @@ body {
    HIGHLIGHT CARD
    ========================= */
 .highlight-box {
-    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+
+    background: linear-gradient(135deg, #b9b9b9, #f7f7f7);
     /* soft, appetizing gradient */
     max-width: 520px;
-    width: 100%;
+    width: auto;
     margin: 0 auto;
     padding: 30px 28px;
     border-radius: 16px;
@@ -106,7 +116,7 @@ body {
 .highlight-box li {
     padding: 10px 0;
     font-size: 16px;
-    color: #374151;
+    color: #3b4555;
     border-bottom: 1px solid #ffe5d9;
 }
 

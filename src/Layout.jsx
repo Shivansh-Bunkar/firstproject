@@ -2,7 +2,7 @@ import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import "./layout.css";
 import {
     faShoppingCart,
     faDrumstickBite,
@@ -11,7 +11,9 @@ import {
     faShoppingBag,
     faComment,
     faUserPlus,
-    faHotel
+    faHotel,
+
+    faUser
 } from '@fortawesome/free-solid-svg-icons';
 
 function Layout() {
@@ -100,13 +102,13 @@ function Layout() {
                         ) : (
                             <>
                                 <Link to="/Register"><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
-                                <Link to="/Login">Login</Link>
+                                <Link to="/Login"> <FontAwesomeIcon icon={faUser} /> Login</Link>
                             </>
                         )}
 
                     </div>
 
-                    <Link to="/Addition">Addition</Link>
+                    {/* <Link to="/Addition">Addition</Link> */}
                 </nav>
             </div>
 
