@@ -13,7 +13,11 @@ import {
     faUserPlus,
     faHotel,
 
-    faUser
+    faUser,
+    faSpoon,
+    faBellConcierge,
+    faBellSlash,
+    faCrown
 } from '@fortawesome/free-solid-svg-icons';
 
 function Layout() {
@@ -36,36 +40,36 @@ function Layout() {
             <div className="navbar-wrapper">
                 <nav className="menu-bar">
                     <div className="logo">
-                        <Link to="/">Zaika-Rasoi</Link>
+                        <Link to="/AboutUs"> <FontAwesomeIcon icon={faCrown} style={{ color: "darkcyan" }} />  Rasoi-Reserve</Link>
                     </div>
 
                     <div className="nav-links">
                         <Link to="/Home">
-                            <FontAwesomeIcon icon={faHome} /> Home
+                            <FontAwesomeIcon icon={faHome} style={{ color: "gold" }} /> Home
                         </Link>
 
                         <Link to="/Reastaurant">
-                            <FontAwesomeIcon icon={faHotel} /> Restaurant
+                            <FontAwesomeIcon icon={faHotel} style={{ color: "gainsboro" }} /> Restaurant
                         </Link>
 
                         <Link to="/Veg">
-                            <FontAwesomeIcon icon={faBowlRice} /> Veg Items
+                            <FontAwesomeIcon icon={faBowlRice} style={{ color: "orangered" }} /> Veg Items
                         </Link>
 
                         <Link to="/Nonveg">
-                            <FontAwesomeIcon icon={faDrumstickBite} /> NonVeg Items
+                            <FontAwesomeIcon icon={faDrumstickBite} style={{ color: "burlywood" }} /> NonVeg Items
                         </Link>
 
                         <Link to="/Contact">
-                            <FontAwesomeIcon icon={faComment} /> Contact
+                            <FontAwesomeIcon icon={faComment} style={{ color: "beige" }} /> Contact
                         </Link>
 
                         <Link to="/Cart">
-                            <FontAwesomeIcon icon={faShoppingCart} /> Cart ({totalQuantity})
+                            <FontAwesomeIcon icon={faShoppingCart} style={{ color: "whitesmoke" }} /> Cart ({totalQuantity})
                         </Link>
 
                         <Link to="/Orders">
-                            <FontAwesomeIcon icon={faShoppingBag} /> Orders
+                            <FontAwesomeIcon icon={faShoppingBag} style={{ color: "brown" }} /> Orders
                         </Link>
                         {loggedUser ? (
                             <div className="user-menu-container">
@@ -101,8 +105,8 @@ function Layout() {
                             </div>
                         ) : (
                             <>
-                                <Link to="/Register"><FontAwesomeIcon icon={faUserPlus} /> Register</Link>
-                                <Link to="/Login"> <FontAwesomeIcon icon={faUser} /> Login</Link>
+                                <Link to="/Register"><FontAwesomeIcon icon={faUserPlus} style={{ color: "green" }} /> Register</Link>
+                                <Link to="/Login"> <FontAwesomeIcon icon={faUser} style={{ color: "orange" }} /> Login</Link>
                             </>
                         )}
 

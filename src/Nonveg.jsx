@@ -3,6 +3,8 @@ import './nonveg.css'
 import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 
 function Nonveg() {
@@ -74,7 +76,7 @@ function Nonveg() {
                                     },
                                 });
                             }}
-                        >
+                        > <FontAwesomeIcon icon={faShoppingCart} />
                             Add to Cart
                         </button>
                     </div>

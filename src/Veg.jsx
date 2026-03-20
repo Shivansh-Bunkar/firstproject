@@ -5,6 +5,8 @@ import { addToCart } from "./CartSlice";
 import { useState } from 'react';
 import Toast from './Toast';
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Veg() {
 
@@ -87,7 +89,7 @@ function Veg() {
                                     },
                                 });
                             }}
-                        >
+                        > <FontAwesomeIcon icon={faShoppingCart} />
                             Add to Cart
                         </button>
                     </div>

@@ -16,6 +16,7 @@ import UserDashboard from './UserDashboard';
 import Addition from './Addition';
 import RestaurantList from './RestaurantList';
 import BookingTable from './BookingTable';
+import About from './AboutUS';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Addition" element={<Addition />} />
             <Route path="/BookingTable" element={<BookingTable />} />
-
+            <Route path="/AboutUs" element={<About />} />
 
           </Route>
 

@@ -163,54 +163,62 @@ function Cart() {
                             <button onClick={() => setDiscPercent(0)}>Remove Discount</button>
                         </div>
                     </div>
-
-                    <button className="checkout" onClick={() =>
-                        setCheckout(true)}>
-                        Checkout
-                    </button>
-
-                    {checkout && (
-                        <div className="checkout">
-                            <h2>CheckOut Summary</h2>
-                            <button onClick={() => setPaymentMethod("Credit Card")}>Credit Card</button>
-                            <button onClick={() => setPaymentMethod("qr")}>QR Code</button>
+                    <div className="payment-section ">
+                        <div className="checkout-container">
+                            <button className="checkout-button" onClick={() =>
+                                setCheckout(true)}>
+                                Payment Checkout
+                            </button>
                         </div>
-                    )}
 
-                    {paymentMethod === "Credit Card" && (
-                        <div className="payment">
-                            <h2>Payment Method: {paymentMethod}</h2>
-                            <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
+                        {checkout && (
+                            <div className="checkout">
+                                <h2>CheckOut Summary</h2>
+                                <button onClick={() => setPaymentMethod("Credit Card")}>Credit Card</button>
+                                <button onClick={() => setPaymentMethod("qr")}>QR Code</button>
+                            </div>
+                        )}
+
+                        {paymentMethod === "Credit Card" && (
+                            <div className="payment">
+                                <h2>Payment Method: {paymentMethod}</h2>
+                                <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
+                            </div>
+                        )}
+
+                        {paymentMethod === "qr" && (
+                            <div className="payment">
+                                <h2>Payment Method: {paymentMethod}</h2>
+                                <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
+                                <QRCode value={`upi://pay?pa=7389959273@nyes&pn=Shivansh-Bunkar&am=${Number(finalAmount).toFixed(2)}&cu=INR`} />
+                            </div>
+                        )}
+
+                        <div id="div-cont">
+                            <label>Email:</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) =>
+                                    setEmail(e.target.value)}
+                                placeholder="Enter Your Email"
+                            />
+
+
                         </div>
-                    )}
-
-                    {paymentMethod === "qr" && (
-                        <div className="payment">
-                            <h2>Payment Method: {paymentMethod}</h2>
-                            <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
-                            <QRCode value={`upi://pay?pa=7389959273@nyes&pn=Shivansh-Bunkar&am=${Number(finalAmount).toFixed(2)}&cu=INR`} />
+                        <div className="checkout-container">
+                            <button onClick={() => {
+                                handleCheckoutEmail();
+                                dispatch(addOrder(purchaseDetails));
+                                navigate("/Orders");
+                            }} className="checkout-button">
+                                Checkout Email
+                            </button>
                         </div>
-                    )}
-
-                    <div id="div-cont">
-                        <label>Enter email for confirmation:</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) =>
-                                setEmail(e.target.value)}
-                            placeholder="Enter Your Email"
-                        />
-                        <br /><br />
-                        <button onClick={() => {
-                            handleCheckoutEmail();
-                            dispatch(addOrder(purchaseDetails));
-                            navigate("/Orders");
-                        }}>
-                            Checkout Email
-                        </button>
                     </div>
+
                 </>
+
             )}
         </div>
     );

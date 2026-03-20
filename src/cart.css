@@ -1,261 +1,249 @@
-/* ================= PAGE BG ================= */
+/* =========================
+   GLOBAL PAGE
+========================= */
 .cart-page {
+    padding: 30px;
+    background: #f5f7fa;
     min-height: 100vh;
-    padding: 40px;
-    background: linear-gradient(135deg, #9b6f46, #4ee3ef);
-    font-family: "Inter", "Segoe UI", sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-
-h2 {
-    color: #2f2f2f;
-    /* graphite black */
+.cart-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* ================= CART LIST ================= */
+/* =========================
+   CLEAR BUTTON
+========================= */
+.clear {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.clear button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ff4d4f;
+    color: white;
+    font-weight: 600;
+}
+
+/* =========================
+   CART ITEMS
+========================= */
 .cart-items {
-    width: auto;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-/* ================= ROW ITEM ================= */
 .cart-item {
-    display: flex;
-    align-items: center;
-    /* ✅ fixed */
-    justify-content: space-between;
-
-    gap: auto;
-    /* ✅ spacing between elements */
-
-    background: #ffffff;
+    background: white;
     border-radius: 14px;
-    padding: 16px 20px;
-
-    border: 1px solid #e4e6eb;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-
-    transition: all 0.25s ease;
-
-    flex-wrap: wrap;
-}
-
-.cart-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
-}
-
-
-
-/* Left section */
-.cart-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex: 1;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
 }
 
 .cart-item img {
-    width: 80px;
-    /* ✅ FIXED */
-    height: 64px;
-
-    border-radius: 10px;
+    width: 100%;
+    height: 150px;
     object-fit: cover;
-
-    border: 1px solid #eee;
-}
-
-.cart-left h2 {
-    font-size: 16px;
-    margin: 0;
-    color: #2f2f2f;
-    /* graphite black */
-}
-
-#div-cont {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 6px;
-    align-items: flex-start;
-    margin-top: 20px;
-
-    flex-wrap: wrap;
-}
-
-#div-cont input {
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    /* light graphite */
-    width: 250px;
-    font-size: 14px;
-}
-
-#div-cont input:focus {
-    outline: none;
-    border-color: #4ade80;
-    /* green accent */
-}
-
-#div-cont button {
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    background: #4ade80;
-    /* green accent */
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s ease;
-
-
-}
-
-label {
-    font-size: 14px;
-    color: #111112;
-    /* graphite gray */
-}
-
-.price {
-    font-size: 14px;
-    font-weight: 600;
-    color: #5a5a5a;
-    /* soft graphite */
-    margin-top: 3px;
-}
-
-/* ================= QUANTITY ================= */
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f1f3f6;
-    padding: 6px 10px;
     border-radius: 10px;
+}
+
+.cart-item h2 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.cart-item p {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+/* Buttons inside cart item */
+.cart-item button {
+    margin: 6px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #eee;
 }
 
 .button-incdec {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    border: none;
-    background: #dfe3e8;
-    /* light graphite */
-    color: #2c2c2c;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s ease;
+    background: #ddd;
+    font-weight: bold;
 }
 
-.button-incdec:hover {
-    background: #cfd6dd;
-}
-
-.quantity-value {
-    min-width: 24px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 15px;
-    color: #2f2f2f;
-}
-
-/* Remove btn */
-.remove-btn {
-    background: #eceff3;
-    color: #333;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: 0.2s ease;
-}
-
-.remove-btn:hover {
-    background: #e0e4ea;
-}
-
-/* ================= BILL SUMMARY CARD ================= */
+/* =========================
+   BILL SECTION
+========================= */
 .bill {
-    max-width: 420px;
-    margin: 40px auto 20px;
-    padding: 24px 26px;
-    border-radius: 18px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    flex-wrap: wrap;
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    margin: 0 auto 30px;
+    text-align: center;
 }
 
 .bill h2 {
-    text-align: center;
-    margin-bottom: 18px;
-    font-size: 22px;
-    font-weight: 600;
-    color: #2f2f2f;
-    border-bottom: 1px solid #ececec;
-    padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .bill p {
-    display: flex;
-    justify-content: space-between;
+    margin: 8px 0;
     font-size: 15px;
+}
+
+/* Input */
+.bill input {
+    width: 80%;
+    padding: 10px;
     margin: 10px 0;
-    color: #4b5563;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
-.bill p:last-of-type {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1f2937;
-    border-top: 1px dashed #e5e7eb;
-    padding-top: 12px;
-    margin-top: 14px;
+/* Apply coupon button */
+.bill>button {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #dddcc5;
+    color: #f2740e;
+    font-weight: 600;
 }
 
-/* ================= BOTTOM ACTION BUTTONS ================= */
-.checkout {
-    max-width: 420px;
-    margin: 15px auto;
+/* =========================
+   DISCOUNT BUTTONS
+========================= */
+.discount-buttons {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 12px;
+    margin-top: 15px;
 }
 
-.checkout button {
-    flex: 1;
+.discount-buttons button {
+    width: 220px;
     padding: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #dddcc5;
+    color: #f2740e;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.discount-buttons button:hover {
+    background: #eec375;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   PAYMENT SECTION
+========================= */
+.payment-section {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.checkout-button {
+    padding: 12px 20px;
     border-radius: 12px;
     border: none;
     font-weight: 600;
     cursor: pointer;
-    background: #e4e7eb;
-    /* light graphite */
-    color: #2f2f2f;
+    background: #dddcc5;
+    color: #f2740e;
     transition: 0.2s ease;
 }
 
-.checkout button:hover {
-    background: #d6dbe1;
-    transform: translateY(-1px);
+.checkout-button:hover {
+    background: #eec375;
+    transform: translateY(-2px);
 }
 
-/* Payment box */
-.payment {
-    max-width: 420px;
-    margin: 10px auto 40px;
-    padding: 16px;
-    border-radius: 14px;
-    background: #f1f3f6;
-    border: 1px solid #e5e7eb;
-    color: #2f2f2f;
+/* =========================
+   CHECKOUT OPTIONS
+========================= */
+.checkout {
     text-align: center;
+    margin-top: 20px;
+}
+
+.checkout button {
+    margin: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #eee;
+}
+
+/* =========================
+   PAYMENT DISPLAY
+========================= */
+.payment {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.payment p {
+    font-weight: bold;
+}
+
+/* =========================
+   EMAIL INPUT
+========================= */
+#div-cont {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#div-cont input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .cart-page {
+        padding: 15px;
+    }
+
+    .bill,
+    .payment-section {
+        width: 100%;
+    }
+
+    .discount-buttons button {
+        width: 100%;
+    }
 }
