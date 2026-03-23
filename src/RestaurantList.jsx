@@ -27,6 +27,13 @@ function RestaurantList() {
         { id: 15, name: "Pizza Hut", cuisine: "Fast Food", rating: 4.0, costForTwo: 500, location: "Hitech City" },
         { id: 16, name: "KFC", cuisine: "Fast Food", rating: 4.2, costForTwo: 600, location: "Hitech City" }
     ];
+
+
+    const handlelocation = () => {
+        const place = restaurants.location;
+
+        window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`, "_blank");
+    };
     return (
         <>
             <div className="restaurant-grid">
@@ -39,7 +46,12 @@ function RestaurantList() {
                         </div>
                         <div className="restaurant-meta">
                             <span className="rating"><FontAwesomeIcon icon={faRankingStar} /> {r.rating}</span>
-                            <span className="location"><FontAwesomeIcon icon={faLocation} /> {r.location}</span>
+                            <span className="location" onClick={() => {
+                                const place = r.location;
+
+                                window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`, "_blank");
+                            }
+                            }><FontAwesomeIcon icon={faLocation} /> {r.location}</span>
                         </div>
                         <button className="book-btn" onClick={() => {
                             toast.success("Restaurant Selected successfully.. ")

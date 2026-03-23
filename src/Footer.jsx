@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./footer.css";
 import { faAddressBook, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
 
-
+    const navigate = useNavigate();
 
 
     return (
@@ -17,6 +18,9 @@ function Footer() {
                         <li>Retail</li>
                         <li>Food Service</li>
                         <li>Exclusive</li>
+                        <li onClick={() => navigate("/AboutUs")}>
+                            About
+                        </li>
                     </ul>
                 </div>
 

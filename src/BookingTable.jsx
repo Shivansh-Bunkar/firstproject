@@ -1,55 +1,96 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faTable } from "@fortawesome/free-solid-svg-icons";
+import { faTable, faStar, faDedent, faD, faReceipt } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-hot-toast";
+import { useParams } from "react-router-dom";
 import "./BookingTable.css";
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addBooking } from "../Backend/BookingSlice";
 
-function BookingTable() {
+const BookingTable = ({ loggedUser, tablesData }) => {
 
-    const tablesData = [
-        { id: 1, type: "Couple", capacity: 2, location: "Window", privacy: "High" },
-        { id: 2, type: "Family", capacity: 6, location: "Center", privacy: "Medium" },
-        { id: 3, type: "Friends", capacity: 4, location: "Front", privacy: "Low" },
-        { id: 4, type: "Couple", capacity: 2, location: "Corner", privacy: "High" },
-        { id: 5, type: "Family", capacity: 6, location: "Window", privacy: "High" },
-        { id: 6, type: "Friends", capacity: 4, location: "Center", privacy: "Medium" },
-        { id: 7, type: "Couple", capacity: 2, location: "Front", privacy: "Low" },
-        { id: 8, type: "Family", capacity: 6, location: "Corner", privacy: "High" }
-    ];
+    const { restaurantId } = useParams();
+    const selectedRestaurant = restaurantId;
 
+    const [people, setPeople] = useState(2);
     const [selectedTables, setSelectedTables] = useState([]);
     const [bookedTables, setBookedTables] = useState([]);
-    const [people, setPeople] = useState(2);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
 
-    const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"))
-    // ✅ Selection logic
+    const tableData = [
+        { id: 1, type: "Couple", capacity: 2, location: "Window", privacy: "High", price: 800 },
+        { id: 2, type: "Family", capacity: 6, location: "Center", privacy: "Medium", price: 1200 },
+        { id: 3, type: "Friends", capacity: 4, location: "Front", privacy: "Low", price: 700 },
+        { id: 4, type: "Couple", capacity: 2, location: "Corner", privacy: "High", price: 850 },
+        { id: 5, type: "Family", capacity: 6, location: "Window", privacy: "High", price: 1500 },
+        { id: 6, type: "Friends", capacity: 4, location: "Center", privacy: "Medium", price: 900 },
+        { id: 7, type: "Couple", capacity: 2, location: "Front", privacy: "Low", price: 500 },
+        { id: 8, type: "Family", capacity: 6, location: "Corner", privacy: "High", price: 1400 }
+    ];
+    // ---------------- FETCH BOOKED TABLES ----------------
+    const fetchBookedTables = async () => {
+        try {
+            const res = await fetch(
+                `http://localhost:5000/api/bookings/${selectedRestaurant}`
+            );
+
+            const data = await res.json();
+
+            if (res.ok) {
+                setBookedTables(Array.isArray(data) ? data : []);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        if (selectedRestaurant) fetchBookedTables();
+    }, [selectedRestaurant]);
+
+    // ---------------- KEEP YOUR SELECT LOGIC ----------------
     const handleSelect = (table) => {
-        const isBooked = bookedTables.some(t => t.id === table.id);
-        if (isBooked) return; // ❌ prevent selecting booked table
+
+        const isBooked = bookedTables.some(
+            (booking) =>
+                Array.isArray(booking.tables) &&
+                booking.tables.includes(table.id)
+        );
+
+        if (isBooked) return;
 
         const exists = selectedTables.find((t) => t.id === table.id);
 
         if (exists) {
-            setSelectedTables(prev => prev.filter((t) => t.id !== table.id));
+            setSelectedTables(prev =>
+                prev.filter((t) => t.id !== table.id)
+            );
         } else {
             setSelectedTables(prev => [...prev, table]);
         }
     };
 
-    const handleCancelBooking = (id) => {
-        setBookedTables(prev => prev.filter(t => t.id !== id));
-        toast.success("Booking Cancelled");
+    // ---------------- CONFIRM BOOKING ----------------
+    const handleConfirmBooking = async () => {
+        const res = await fetch("http://localhost:5000/api/book-table", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: loggedUser?._id,
+                restaurantId: selectedRestaurant,
+                tables: selectedTables.map(t => t.id),
+                date: new Date().toLocaleString(),
+            }),
+        });
+
+        if (!res.ok) throw new Error();
     };
 
     return (
         <div className="booking-container">
+
             <h2>Book Your Table</h2>
 
+            {/* ===== YOUR UI UNTOUCHED ===== */}
             <div className="people-select">
                 <label>Select People: </label>
                 <select onChange={(e) => setPeople(Number(e.target.value))}>
@@ -60,53 +101,54 @@ function BookingTable() {
             </div>
 
             <div className="table-grid">
-                {tablesData.map((table) => {
+                {Array.isArray(tableData) &&
+                    tableData.map((table) => {
 
-                    const isSelected = selectedTables.some(t => t.id === table.id);
-                    const isBooked = bookedTables.some(t => t.id === table.id);
-                    const isSuitable = table.capacity >= people;
+                        const isSelected = selectedTables.some(
+                            t => t.id === table.id
+                        );
 
-                    return (
-                        <div
-                            key={table.id}
-                            className={`table-card 
-                                ${isSelected ? "selected" : ""} 
-                                ${isBooked ? "booked" : ""} 
-                                ${!isSuitable ? "not-suitable" : ""}
-                            `}
-                            onClick={() => handleSelect(table)}
-                        >
-                            <div className="card-header">
-                                <FontAwesomeIcon icon={faTable} />
-                                <h3>
-                                    Table {table.id} {isBooked && <FontAwesomeIcon icon={faStar} />}
-                                </h3>
+                        const isBooked = bookedTables.some(
+                            (booking) =>
+                                Array.isArray(booking.tables) &&
+                                booking.tables.includes(table.id)
+                        );
+
+                        const isSuitable = table.capacity >= people;
+
+                        return (
+                            <div
+                                key={table.id}
+                                className={`table-card 
+                                    ${isSelected ? "selected" : ""} 
+                                    ${isBooked ? "booked" : ""} 
+                                    ${!isSuitable ? "not-suitable" : ""}
+                                `}
+                                onClick={() => handleSelect(table)}
+                            >
+
+                                <div className="card-header">
+                                    <FontAwesomeIcon icon={faTable} />
+                                    <h3>
+                                        Table {table.id}{" "}
+                                        {isBooked && <FontAwesomeIcon icon={faStar} />}
+                                    </h3>
+                                </div>
+
+                                <div className="card-body">
+                                    <p>{table.type}</p>
+                                    <p>₹{table.price}</p>
+                                    <p>{table.capacity} Persons</p>
+                                </div>
+
+                                <div className="card-footer">
+                                    <span>{table.location}</span>
+                                    <span>{table.privacy}</span>
+                                </div>
+
                             </div>
-
-                            <div className="card-body">
-                                <p>{table.type}</p>
-                                <p>{table.capacity} Persons</p>
-                            </div>
-
-                            <div className="card-footer">
-                                <span>{table.location}</span>
-                                <span>{table.privacy}</span>
-
-                                {isBooked && (
-                                    <button
-                                        className="cancel-btn"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleCancelBooking(table.id); // ✅ correct variable
-                                        }}
-                                    >
-                                        Cancel
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
             </div>
 
             <div className="summary">
@@ -115,32 +157,31 @@ function BookingTable() {
                 {selectedTables.length === 0 ? (
                     <p>None</p>
                 ) : (
-                    selectedTables.map((t) => (
+                    selectedTables.map(t => (
                         <p key={t.id}>
-                            Table {t.id} ({t.type}, {t.capacity} persons)
+                            Table {t.id} ({t.type}, {t.capacity})
                         </p>
                     ))
                 )}
 
                 <button
                     disabled={selectedTables.length === 0}
-                    onClick={() => {
+                    onClick={async () => {
+
                         if (!loggedUser) {
                             toast.error("Please login first!");
                             return;
                         }
 
-                        setBookedTables(prev => [...prev, ...selectedTables]);
+                        try {
+                            await handleConfirmBooking();
+                            await fetchBookedTables();
 
-                        dispatch(addBooking({
-                            userId: loggedUser.id,   // ✅ FIXED
-                            tables: selectedTables,
-                            date: new Date().toLocaleString()
-                        }));
-
-                        setSelectedTables([]);
-
-                        toast.success("Booking Confirmed!");
+                            setSelectedTables([]);
+                            toast.success("Booking Confirmed!");
+                        } catch {
+                            toast.error("Booking failed!");
+                        }
                     }}
                 >
                     Confirm Booking
@@ -149,6 +190,6 @@ function BookingTable() {
 
         </div>
     );
-}
+};
 
 export default BookingTable;

@@ -1,41 +1,50 @@
-/* PAGE */
+/* APPLY TO EVERYTHING TO PREVENT WIDTH ISSUES */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+/* PAGE */
 .login-page {
-    min-height: 80vh;
+    min-height: 100vh;
+    /* Changed from 80vh to 100vh to fill screen */
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #a7ebdb, #e0d6db);
+    overflow-x: hidden;
+    /* Prevents accidental horizontal scroll */
+    padding: 20px;
+    /* Space for mobile edges */
 }
 
-
 /* CARD */
-
 .login-card {
-    width: 350px;
-    padding: 35px 30px;
+    width: 100%;
+    max-width: 350px;
+    /* Shrinks on small screens, stops at 350px on big ones */
+    padding: 30px;
     background: rgb(198, 150, 130);
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-
 /* TITLE */
-
 .login-title {
     text-align: center;
     font-size: 1.8rem;
     color: #203a43;
+    margin-bottom: 10px;
 }
 
-
 /* INPUTS */
-
 .login-card input {
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -43,16 +52,47 @@
     transition: 0.3s;
 }
 
-.login-card input:focus {
-    outline: none;
-    border-color: #2c5364;
-    box-shadow: 0 0 4px rgba(44, 83, 100, 0.4);
+/* PASSWORD CONTAINER FIX */
+.password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
+/* Position Icons */
+.password-container .fa-lock {
+    position: absolute;
+    left: 12px;
+    color: #555;
+    z-index: 2;
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: #555;
+    z-index: 2;
+}
+
+/* Specific Padding for Password Input so text doesn't hit icons */
+.password-container input {
+    padding-left: 38px !important;
+    padding-right: 38px !important;
+}
+
+/* ERROR TEXT */
+.error-text {
+    color: #8b0000;
+    font-size: 12px;
+    margin-top: -10px;
+    font-weight: 500;
+}
 
 /* BUTTON */
-
 .login-btn {
+    width: 100%;
     padding: 12px;
     border: none;
     border-radius: 6px;
@@ -65,5 +105,53 @@
 }
 
 .login-btn:hover {
-    transform: scale(1.03);
+    filter: brightness(1.1);
+}
+
+.login-btn:disabled {
+    background: #777;
+    cursor: not-allowed;
+}
+
+/* MEDIA QUERIES */
+
+/* For Small Mobile Devices (e.g., iPhone SE or smaller) */
+@media (max-width: 400px) {
+    .login-page {
+        padding: 10px;
+        /* Reduces page padding to give the card more room */
+    }
+
+    .login-card {
+        padding: 20px;
+        /* Shrinks internal card padding */
+        gap: 12px;
+        /* Reduces spacing between inputs */
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+        /* Smaller title to fit better */
+    }
+
+    .login-card input {
+        padding: 10px;
+        /* Slightly smaller input padding */
+        font-size: 13px;
+        /* Smaller font for small screens */
+    }
+
+    .login-btn {
+        padding: 10px;
+    }
+}
+
+/* For Landscape Mode on Phones */
+@media (max-height: 500px) {
+    .login-page {
+        align-items: flex-start;
+        /* Prevents the card from being cut off at the top */
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }

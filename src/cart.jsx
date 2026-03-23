@@ -9,6 +9,8 @@ import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
 import { addOrder } from "../Backend/OrderSlice";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus, faDeleteLeft, faEraser, faPager, faPlus, faReceipt, faRemove } from "@fortawesome/free-solid-svg-icons";
 
 function Cart() {
 
@@ -97,128 +99,146 @@ function Cart() {
 
     return (
         <div className="cart-page">
+
             {items.length === 0 ? (
                 <h1>Your cart is empty.</h1>
             ) : (
                 <>
-                    <h1>Your Cart</h1>
-                    <div className="clear">
-                        <button
-                            onClick={() => {
+                    {/* LEFT SIDE */}
+                    <div className="left-side">
+
+                        <h1>
+                            <FontAwesomeIcon icon={faCartPlus} style={{ color: "cornflowerblue" }} />
+                            Your Cart
+                        </h1>
+
+                        <div className="clear">
+                            <button onClick={() => {
                                 dispatch(clearCart());
                                 setDiscPercent(0);
                                 dispatch(removeCoupon());
-                            }}
-                        >
-                            Clear Cart
-                        </button>
-                    </div>
-
-                    <div className="cart-items">
-                        {items.map(item => (
-                            <div key={item.id} className="cart-item">
-                                <img src={item.image} alt={item.name} />
-                                <h2>{item.name}</h2>
-                                <p>Price: ₹{item.price}</p>
-                                <p>{item.description}</p>
-
-                                <button onClick={() => { dispatch(removeFromCart(item.id)); setDiscPercent(0); dispatch(removeCoupon()); }}>
-                                    Remove
-                                </button>
-
-                                <button className="button-incdec" onClick={() => dispatch(decrementQty(item.id))}>-</button>
-                                <span>{item.quantity}</span>
-                                <button className="button-incdec" onClick={() => dispatch(incrementQty(item.id))}>+</button>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="bill">
-                        <h2>Bill Summary</h2>
-                        <p>Total Quantity: {totalQuantity}</p>
-                        <p>Total Amount: ₹{totalAmount.toFixed(2)}</p>
-
-                        <p>Discount: {discPercent}%</p>
-                        <p>Discount Amount: ₹{discAmount.toFixed(2)}</p>
-
-                        <label>Enter Coupon Code:</label>
-                        <input
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            placeholder="Enter coupon code"
-                        />
-                        <button onClick={() => { dispatch(applyCoupon(input)); setInput(""); }}>
-                            Apply Coupon
-                        </button>
-
-                        <p>Price After Discount: ₹{priceAfterDisc.toFixed(2)}</p>
-                        <p>GST (18%): ₹{gstAmount.toFixed(2)}</p>
-                        <p>Final Amount: ₹{finalAmount.toFixed(2)}</p>
-
-                        <div className="discount-buttons">
-                            <button onClick={() => setDiscPercent(10)}>Apply 10% Discount</button>
-                            <button onClick={() => setDiscPercent(20)}>Apply 20% Discount</button>
-                            <button onClick={() => setDiscPercent(30)}>Apply 30% Discount</button>
-                            <button onClick={() => setDiscPercent(0)}>Remove Discount</button>
-                        </div>
-                    </div>
-                    <div className="payment-section ">
-                        <div className="checkout-container">
-                            <button className="checkout-button" onClick={() =>
-                                setCheckout(true)}>
-                                Payment Checkout
+                            }}>
+                                < FontAwesomeIcon icon={faEraser} /> Clear Cart
                             </button>
                         </div>
 
-                        {checkout && (
-                            <div className="checkout">
-                                <h2>CheckOut Summary</h2>
-                                <button onClick={() => setPaymentMethod("Credit Card")}>Credit Card</button>
-                                <button onClick={() => setPaymentMethod("qr")}>QR Code</button>
-                            </div>
-                        )}
+                        <div className="cart-items">
+                            {items.map(item => (
+                                <div key={item.id} className="cart-item">
+                                    <img src={item.image} alt={item.name} />
+                                    <h2>{item.name}</h2>
+                                    <p>Price: ₹{item.price}</p>
+                                    {/* <p>{item.description}</p> */}
 
-                        {paymentMethod === "Credit Card" && (
-                            <div className="payment">
-                                <h2>Payment Method: {paymentMethod}</h2>
-                                <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
-                            </div>
-                        )}
+                                    <button onClick={() => {
+                                        dispatch(removeFromCart(item.id));
+                                        setDiscPercent(0);
+                                        dispatch(removeCoupon());
+                                    }} style={{ color: "orangered", fontWeight: "600" }}>
+                                        <FontAwesomeIcon icon={faRemove} />  Remove
+                                    </button>
 
-                        {paymentMethod === "qr" && (
-                            <div className="payment">
-                                <h2>Payment Method: {paymentMethod}</h2>
-                                <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
-                                <QRCode value={`upi://pay?pa=7389959273@nyes&pn=Shivansh-Bunkar&am=${Number(finalAmount).toFixed(2)}&cu=INR`} />
-                            </div>
-                        )}
-
-                        <div id="div-cont">
-                            <label>Email:</label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) =>
-                                    setEmail(e.target.value)}
-                                placeholder="Enter Your Email"
-                            />
-
-
+                                    <button className="button-incdec" style={{ color: "darkgoldenrod", fontWeight: "600" }} onClick={() => dispatch(decrementQty(item.id))}>< FontAwesomeIcon icon={faDeleteLeft} />-</button>
+                                    <span style={{ color: "orangered", fontWeight: "900" }}>{item.quantity}</span>
+                                    <button className="button-incdec" style={{ color: "darkgoldenrod", fontWeight: "600" }} onClick={() => dispatch(incrementQty(item.id))}>< FontAwesomeIcon icon={faPlus} />+</button>
+                                </div>
+                            ))}
                         </div>
-                        <div className="checkout-container">
+                    </div>
+
+                    {/* RIGHT SIDE */}
+                    <div className="right-side">
+
+                        <div className="bill">
+                            <h1><FontAwesomeIcon icon={faReceipt} /> Bill Summary</h1>
+
+                            <p><span>Total Quantity:</span><span>{totalQuantity}</span></p>
+                            <p><span>Total Amount:</span><span>₹{totalAmount.toFixed(2)}</span></p>
+                            <p><span>Discount:</span><span>{discPercent}%</span></p>
+                            <p><span>Discount Amount:</span><span>₹{discAmount.toFixed(2)}</span></p>
+
+                            <p>
+                                <span><label>Enter Coupon Code:</label></span>
+                                <span>
+                                    <input
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        placeholder="Enter coupon code"
+                                    />
+                                </span>
+                            </p>
+
                             <button onClick={() => {
-                                handleCheckoutEmail();
-                                dispatch(addOrder(purchaseDetails));
-                                navigate("/Orders");
-                            }} className="checkout-button">
-                                Checkout Email
+                                dispatch(applyCoupon(input));
+                                setInput("");
+                            }}>
+                                <FontAwesomeIcon icon={faPager} /> Apply Coupon
                             </button>
+
+                            <p><span>Price After Discount:</span><span>₹{priceAfterDisc.toFixed(2)}</span></p>
+                            <p><span>GST (18%):</span><span>₹{gstAmount.toFixed(2)}</span></p>
+                            <p><span>Final Amount:</span><span>₹{finalAmount.toFixed(2)}</span></p>
+
+                            <div className="discount-buttons">
+                                <button onClick={() => setDiscPercent(10)}>Apply 10%</button>
+                                <button onClick={() => setDiscPercent(20)}>Apply 20%</button>
+                                <button onClick={() => setDiscPercent(30)}>Apply 30%</button>
+                                <button onClick={() => setDiscPercent(0)}>Remove</button>
+                            </div>
                         </div>
+
+                        <div className="payment-section">
+                            <div className="checkout-container">
+                                <button className="checkout-button" onClick={() => setCheckout(!checkout)}>
+                                    Payment Checkout
+                                </button>
+                            </div>
+
+                            {checkout && (
+                                <div className="checkout">
+                                    <button onClick={() => setPaymentMethod("Credit Card")}>Credit Card</button>
+                                    <button onClick={() => setPaymentMethod("qr")}>QR Code</button>
+                                </div>
+                            )}
+                            {paymentMethod === "qr" && (
+                                <div className="payment">
+                                    <h2>Payment Method: {paymentMethod}</h2>
+                                    <p>Final Amount to Pay: ₹{finalAmount.toFixed(2)}</p>
+                                    <QRCode value={`upi://pay?pa=7389959273@nyes&pn=Shivansh-Bunkar&am=${Number(finalAmount).toFixed(2)}&cu=INR`} />
+                                </div>
+                            )}
+
+                            <div id="div-cont">
+                                <h3 style={{ color: "tan" }}>Enter your email to receive order details:</h3>
+                                <p>
+                                    <span><label>Email:</label></span>
+                                    <span>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            placeholder="Enter Your Email"
+                                        />
+                                    </span>
+                                </p>
+                                <p>
+                                    <span >
+                                        <button onClick={() => {
+                                            handleCheckoutEmail();
+                                            dispatch(addOrder(purchaseDetails));
+                                            navigate("/Orders");
+                                        }} >
+                                            Email Confirmation
+                                        </button>
+                                    </span>
+                                </p>
+
+                            </div>
+                        </div>
+
                     </div>
-
                 </>
-
             )}
         </div>
     );
