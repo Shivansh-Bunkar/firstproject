@@ -18,7 +18,7 @@ import BookingTable from './BookingTable';
 import About from './AboutUS';
 import Payment from './Payment';
 import BookingSuccess from './Booking-Success';
-import MIlk from './Milk';
+import Milk from './Milk';
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Reastaurant" element={<RestaurantList />} />
-            <Route path="/MilkPage" element={<MIlk />} />
+            <Route path="/MilkPage" element={<Milk />} />
             <Route path="/Veg" element={<Veg />} />
             <Route path="/Nonveg" element={<Nonveg />} />
             <Route path="/Contact" element={<Contact />} />
