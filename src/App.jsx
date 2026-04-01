@@ -18,7 +18,7 @@ import BookingTable from './BookingTable';
 import About from './AboutUS';
 import Payment from './Payment';
 import BookingSuccess from './Booking-Success';
-import MIlk from './MIlk';
+import MIlk from './Milk';
 
 function App() {
 
