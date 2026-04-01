@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./home.css";
+import "./style/home.css";
 
 function Home() {
 
@@ -9,6 +9,7 @@ function Home() {
         <>
 
             <div className="home">
+
                 <div> <h1 >Food-Web</h1>
                     <h1>Food Menu Application</h1>
                     <p>

@@ -1,0 +1,155 @@
+/* =========================
+   DASHBOARD MAIN LAYOUT
+   ========================= */
+.dashboard {
+    display: flex;
+    gap: 25px;
+    padding: 30px;
+    min-height: calc(100vh - 60px);
+    box-sizing: border-box;
+    background-color: #fef8f2;
+}
+
+/* =========================
+   SIDEBAR (Orange Gradient)
+   ========================= */
+.sidebar {
+    width: 240px;
+    background: linear-gradient(160deg, #ff7a18, #ffd6a5);
+    border-radius: 14px;
+    padding: 25px 20px;
+    color: #1f2937;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    height: fit-content;
+    /* Keeps sidebar from stretching too far */
+}
+
+.sidebar h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: #111827;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 15px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(5px);
+}
+
+/* =========================
+   CONTENT AREA (Green Gradient)
+   ========================= */
+.dashboard-content {
+    flex: 1;
+    background: linear-gradient(180deg, #d9f7be, #ffe0b2);
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-content h2 {
+    margin-bottom: 10px;
+    color: #1f2937;
+}
+
+/* =========================
+   NEW: DASHBOARD ELEMENTS 
+   ========================= */
+
+/* The HR Tag - Subtle fading line */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    margin: 25px 0;
+}
+
+/* Cards (Tracking & Orders) */
+.tracking-card,
+.mini-order-card {
+    background: rgba(255, 255, 255, 0.4);
+    /* Glass effect */
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4ade80;
+    /* Fresh green */
+    border-radius: 10px;
+}
+
+/* Order List Items */
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.order-row:last-child {
+    border-bottom: none;
+}
+
+.price-tag {
+    background: #ff7a18;
+    color: white;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+}

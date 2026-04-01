@@ -1,9 +1,8 @@
 import React from 'react'
-import './veg.css'
+import './style/veg.css'
 import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
 import { useState } from 'react';
-import Toast from './Toast';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';

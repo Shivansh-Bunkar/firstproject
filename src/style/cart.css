@@ -1,0 +1,432 @@
+/* =========================
+   GLOBAL PAGE
+========================= */
+.cart-page {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 20px;
+
+}
+
+.cart-page h1 {
+    margin-bottom: 15px;
+}
+
+/* =========================
+   LEFT / RIGHT LAYOUT
+========================= */
+.left-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.right-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+/* =========================
+   CLEAR BUTTON
+========================= */
+.clear {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.clear button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ff4d4f;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.clear button:hover {
+    opacity: 0.9;
+}
+
+/* =========================
+   CART ITEMS
+========================= */
+.cart-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    max-height: 75vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* CARD */
+.cart-item {
+    width: 260px;
+    height: auto;
+    background: white;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.cart-item h2 {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+.cart-item p {
+    font-size: 13.5px;
+    margin: 3px 0;
+}
+
+/* Buttons */
+.cart-item button {
+    margin: 4px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #c4c4c4;
+    transition: 0.2s;
+}
+
+.cart-item button:hover {
+    background: #e1e0df;
+}
+
+.button-incdec {
+    background: #c7c7c7;
+    font-weight: bold;
+}
+
+/* =========================
+   BILL SECTION
+========================= */
+.bill {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    min-width: 320px;
+    max-width: 400px;
+
+    /* position: sticky; */
+    top: 20px;
+}
+
+/* Heading */
+.bill h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Rows */
+.bill p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 6px 0;
+    font-size: 14.5px;
+
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 6px;
+}
+
+/* Left text */
+.bill p span:first-child {
+    color: #555;
+}
+
+/* Right values */
+.bill p span:last-child {
+    font-weight: 600;
+}
+
+/* Input */
+.bill input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+.bill>button {
+    display: block;
+    margin: 12px auto;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    background: #dddcc5;
+    color: #f2740e;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.bill>button:hover {
+    background: #eec375;
+}
+
+/* Final amount */
+.bill p:last-child {
+    font-size: 16.5px;
+    font-weight: bold;
+
+    border-top: 2px solid #ddd;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+/* =========================
+   DISCOUNT BUTTONS
+========================= */
+.discount-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.discount-buttons button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+    background: #dddcc5;
+    color: #f2740e;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.discount-buttons button:hover {
+    background: #eec375;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   PAYMENT SECTION
+========================= */
+.payment-section {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Checkout button */
+.checkout-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.checkout-button {
+    width: 220px;
+    padding: 12px;
+
+    border-radius: 10px;
+    border: none;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    background: #dddcc5;
+    color: #f2740e;
+
+    transition: 0.2s;
+}
+
+.checkout-button:hover {
+    background: #eec375;
+}
+
+/* =========================
+   CHECKOUT OPTIONS
+========================= */
+.checkout {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.checkout button {
+    margin: 6px;
+    padding: 8px 12px;
+
+    border-radius: 8px;
+    border: none;
+
+    color: #f2740e;
+    font-weight: 600;
+    cursor: pointer;
+
+    background: #dddcc5;
+}
+
+.checkout button:hover {
+    background: #eec375;
+}
+
+/* =========================
+   PAYMENT DISPLAY
+========================= */
+.payment {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.payment p {
+    font-weight: bold;
+    border-bottom: 1px dashed #eee;
+}
+
+/* =========================
+   EMAIL FIELD
+========================= */
+#div-cont {
+    margin-top: 15px;
+}
+
+#div-cont p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 6px;
+}
+
+#div-cont label {
+    font-size: 14px;
+    color: #555;
+    min-width: 100px;
+}
+
+#div-cont input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+#div-cont input:focus {
+    border-color: #f2740e;
+    outline: none;
+}
+
+#div-cont button {
+    /* font-size: medium; */
+    margin: 6px;
+    padding: 8px 12px;
+
+    border-radius: 8px;
+    border: none;
+
+    color: #f2740e;
+    font-weight: 600;
+    cursor: pointer;
+
+    background: #dddcc5;
+}
+
+/* =========================
+   RESPONSIVE
+/* =========================
+   ENHANCED RESPONSIVE UI
+========================= */
+
+@media (max-width: 1024px) {
+    .cart-page {
+        gap: 20px;
+    }
+
+    .right-side {
+        flex: 0 0 300px;
+        /* Slightly narrower sidebar for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-page {
+        flex-direction: column;
+        /* Stack vertically on phones */
+        padding: 15px;
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+        flex: none;
+    }
+
+    .right-side {
+        position: static;
+        /* Remove sticky on mobile so it flows naturally */
+        order: 2;
+        /* Items first, Bill second */
+    }
+
+    .cart-items {
+        justify-content: center;
+        /* Center products on mobile */
+    }
+
+    .cart-item {
+        width: 100%;
+        /* Cards take full width on small phones */
+        max-width: 320px;
+    }
+
+    .bill,
+    .payment-section {
+        min-width: 0;
+        /* Remove the 320px restriction for small screens */
+        width: 100%;
+    }
+}
+
+/* For very small screens (iPhone SE) */
+@media (max-width: 380px) {
+    #div-cont p {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #div-cont input {
+        width: 100%;
+    }
+}

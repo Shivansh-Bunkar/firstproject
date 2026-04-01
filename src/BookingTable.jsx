@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTable, faStar, faDedent, faD, faReceipt } from "@fortawesome/free-solid-svg-icons";
+import { faTable, faStar } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
-import "./BookingTable.css";
+import { useNavigate, useParams } from "react-router-dom";
+import "./style/BookingTable.css";
 
-const BookingTable = ({ loggedUser, tablesData }) => {
-
+const BookingTable = ({ loggedUser }) => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
     const { restaurantId } = useParams();
     const selectedRestaurant = restaurantId;
 
@@ -15,14 +16,14 @@ const BookingTable = ({ loggedUser, tablesData }) => {
     const [bookedTables, setBookedTables] = useState([]);
 
     const tableData = [
-        { id: 1, type: "Couple", capacity: 2, location: "Window", privacy: "High", price: 800 },
-        { id: 2, type: "Family", capacity: 6, location: "Center", privacy: "Medium", price: 1200 },
-        { id: 3, type: "Friends", capacity: 4, location: "Front", privacy: "Low", price: 700 },
-        { id: 4, type: "Couple", capacity: 2, location: "Corner", privacy: "High", price: 850 },
-        { id: 5, type: "Family", capacity: 6, location: "Window", privacy: "High", price: 1500 },
-        { id: 6, type: "Friends", capacity: 4, location: "Center", privacy: "Medium", price: 900 },
-        { id: 7, type: "Couple", capacity: 2, location: "Front", privacy: "Low", price: 500 },
-        { id: 8, type: "Family", capacity: 6, location: "Corner", privacy: "High", price: 1400 }
+        { id: 1, type: "Couple", capacity: 2, location: "Window", privacy: "High", price: 8 },
+        { id: 2, type: "Family", capacity: 6, location: "Center", privacy: "Medium", price: 12 },
+        { id: 3, type: "Friends", capacity: 4, location: "Front", privacy: "Low", price: 7 },
+        { id: 4, type: "Couple", capacity: 2, location: "Corner", privacy: "High", price: 8.5 },
+        { id: 5, type: "Family", capacity: 6, location: "Window", privacy: "High", price: 15 },
+        { id: 6, type: "Friends", capacity: 4, location: "Center", privacy: "Medium", price: 9 },
+        { id: 7, type: "Couple", capacity: 2, location: "Front", privacy: "Low", price: 5 },
+        { id: 8, type: "Family", capacity: 6, location: "Corner", privacy: "High", price: 14 }
     ];
     // ---------------- FETCH BOOKED TABLES ----------------
     const fetchBookedTables = async () => {
@@ -166,25 +167,18 @@ const BookingTable = ({ loggedUser, tablesData }) => {
 
                 <button
                     disabled={selectedTables.length === 0}
-                    onClick={async () => {
-
-                        if (!loggedUser) {
+                    onClick={() => {
+                        if (!token) {
                             toast.error("Please login first!");
                             return;
                         }
 
-                        try {
-                            await handleConfirmBooking();
-                            await fetchBookedTables();
-
-                            setSelectedTables([]);
-                            toast.success("Booking Confirmed!");
-                        } catch {
-                            toast.error("Booking failed!");
-                        }
+                        navigate("/payment", {
+                            state: { selectedTables, restaurantId: selectedRestaurant }
+                        });
                     }}
                 >
-                    Confirm Booking
+                    Book Now
                 </button>
             </div>
 

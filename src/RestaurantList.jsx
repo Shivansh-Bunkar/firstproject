@@ -1,6 +1,6 @@
 import { faAnchor, faArrowUp, faCartFlatbed, faLocation, faRankingStar, faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './restaurant.css';
+import './style/restaurant.css';
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -41,8 +41,8 @@ function RestaurantList() {
                     <div key={r.id} className="restaurant-card">
                         <h2 className="restaurant-title">{r.id}. {r.name}</h2>
                         <div className="restaurant-info">
-                            <span className="cuisine"><FontAwesomeIcon icon={faUtensils} />{r.cuisine}</span>
-                            <span className="price">₹{r.costForTwo}</span>
+                            <FontAwesomeIcon icon={faUtensils} />{r.cuisine}
+                            {/* <span className="price">₹{r.costForTwo}</span> */}
                         </div>
                         <div className="restaurant-meta">
                             <span className="rating"><FontAwesomeIcon icon={faRankingStar} /> {r.rating}</span>

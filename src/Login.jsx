@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import "./login.css";
+import "./style/login.css";
 import toast from 'react-hot-toast';
 import { faEye, faEyeSlash, faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +17,6 @@ function Login() {
         setLoading(true);
 
         try {
-            // Updated to fetch from your MongoDB backend API
             const res = await fetch("http://localhost:5000/api/users/login", {
                 method: "POST",
                 headers: {
@@ -29,17 +28,19 @@ function Login() {
             const result = await res.json();
 
             if (res.ok) {
-                // If your backend returns a user object and token
-                localStorage.setItem("loggedInUser", JSON.stringify(result.user));
-                toast.success(`Welcome back! Login successful 🎉`);
-                navigate(`/user/${result.user._id}`);
-                reset();
+                // ✅ Save token
+                localStorage.setItem("token", result.token);
+                console.log("Login successful, token:", result.token);
+                toast.success("Login successful");
+
+
+                navigate("/");
+
             } else {
-                alert(result.message || "Invalid Email or Password");
+                toast.error(result.message || "Invalid Email or Password");
             }
         } catch (error) {
-            console.log(error);
-            alert("Something went wrong with the server");
+            toast.error("Server error");
         } finally {
             setLoading(false);
         }

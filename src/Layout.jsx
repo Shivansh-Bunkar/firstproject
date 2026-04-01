@@ -1,8 +1,8 @@
-import { Outlet, Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import "./layout.css";
+import "./style/layout.css";
 import {
     faShoppingCart,
     faDrumstickBite,
@@ -12,13 +12,12 @@ import {
     faComment,
     faUserPlus,
     faHotel,
-
     faUser,
-    faSpoon,
-    faBellConcierge,
-    faBellSlash,
-    faCrown
+    faCrown,
+    faUserSecret,
+    faDiamond
 } from '@fortawesome/free-solid-svg-icons';
+import UserDashboard from "./UserDashboard";
 
 function Layout() {
     const navigate = useNavigate();
@@ -26,21 +25,64 @@ function Layout() {
     const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
     const [isOpen, setIsOpen] = useState(false);
-    const loggedUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const [loggedUser, setLoggedUser] = useState(null);
+
+    const location = useLocation();
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        // no token → user not logged in
+        if (!token) {
+            setLoggedUser(null);
+            return;
+        }
+
+        const fetchUser = async () => {
+            try {
+                const res = await fetch("http://localhost:5000/api/users/me", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                // invalid / expired token
+                if (!res.ok) {
+                    localStorage.removeItem("token");
+                    setLoggedUser(null);
+                    return;
+                }
+
+                const data = await res.json();
+                setLoggedUser(data.user);
+
+            } catch (err) {
+                console.log("Error fetching user:", err);
+                setLoggedUser(null);
+            }
+        };
+
+        fetchUser();
+
+    }, [location.pathname]);
 
     const handleLogout = () => {
-        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("token");
+        setLoggedUser(null);
         setIsOpen(false);
-        navigate("/Home");
-        window.location.reload(); // Refresh to update the navbar state
+        navigate("/Login");
     };
 
     return (
         <>
             <div className="navbar-wrapper">
                 <nav className="menu-bar">
+
                     <div className="logo">
-                        <Link to="/AboutUs"> <FontAwesomeIcon icon={faCrown} style={{ color: "darkcyan" }} />  Rasoi-Reserve</Link>
+                        <Link to={loggedUser ? `/user/${loggedUser._id}` : "/AboutUs"}>
+                            <FontAwesomeIcon icon={faCrown} style={{ color: "darkcyan" }} />  Rasoi-Reserve
+                        </Link>
                     </div>
 
                     <div className="nav-links">
@@ -50,6 +92,10 @@ function Layout() {
 
                         <Link to="/Reastaurant">
                             <FontAwesomeIcon icon={faHotel} style={{ color: "gainsboro" }} /> Restaurant
+                        </Link>
+
+                        <Link to="/MilkPage">
+                            <FontAwesomeIcon icon={faDiamond} style={{ color: "white" }} /> Milky-Product
                         </Link>
 
                         <Link to="/Veg">
@@ -64,6 +110,8 @@ function Layout() {
                             <FontAwesomeIcon icon={faComment} style={{ color: "beige" }} /> Contact
                         </Link>
 
+
+
                         <Link to="/Cart">
                             <FontAwesomeIcon icon={faShoppingCart} style={{ color: "whitesmoke" }} /> Cart ({totalQuantity})
                         </Link>
@@ -71,6 +119,8 @@ function Layout() {
                         <Link to="/Orders">
                             <FontAwesomeIcon icon={faShoppingBag} style={{ color: "brown" }} /> Orders
                         </Link>
+
+                        {/* ✅ SAME UI, ONLY DATA SOURCE CHANGED */}
                         {loggedUser ? (
                             <div className="user-menu-container">
                                 <button
@@ -85,8 +135,9 @@ function Layout() {
                                         <button
                                             className="dropdown-item"
                                             onClick={() => {
-                                                navigate(`/user/${loggedUser.name}`);
-                                                setIsOpen(false);
+                                                navigate(`/user/${loggedUser._id}`, {
+                                                    state: { loggedUser }
+                                                }); setIsOpen(false);
                                             }}
                                         >
                                             View Profile
@@ -105,36 +156,29 @@ function Layout() {
                             </div>
                         ) : (
                             <>
-                                <Link to="/Register"><FontAwesomeIcon icon={faUserPlus} style={{ color: "green" }} /> Register</Link>
-                                <Link to="/Login"> <FontAwesomeIcon icon={faUser} style={{ color: "orange" }} /> Login</Link>
+                                <Link to="/Register">
+                                    <FontAwesomeIcon icon={faUserPlus} style={{ color: "green" }} /> Register
+                                </Link>
+                                <Link to="/Login">
+                                    <FontAwesomeIcon icon={faUser} style={{ color: "orange" }} /> Login
+                                </Link>
                             </>
                         )}
-
+                        <Link to="/AboutUs">
+                            <FontAwesomeIcon icon={faUserSecret} style={{ color: "GrayText" }} /> About
+                        </Link>
                     </div>
 
-                    {/* <Link to="/Addition">Addition</Link> */}
                 </nav>
             </div>
+
 
             <div className="page-content">
                 <Outlet />
             </div>
+
         </>
     );
 }
-
-// Reusable style for dropdown items
-const dropdownButtonStyle = {
-    padding: '12px 16px',
-    backgroundColor: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-    textAlign: 'left',
-    width: '100%',
-    fontSize: '15px',
-    color: 'black',
-    fontFamily: 'inherit',
-    transition: '0.2s'
-};
 
 export default Layout;

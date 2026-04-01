@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { incrementQty, decrementQty } from "./CartSlice";
 import { removeFromCart, clearCart } from "./CartSlice";
 import { applyCoupon, removeCoupon } from "../Backend/CouponSlice";
-import './cart.css';
+import './style/cart.css';
 import { QRCode } from "react-qr-code";
 import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";

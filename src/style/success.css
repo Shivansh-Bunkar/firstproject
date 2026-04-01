@@ -1,0 +1,60 @@
+/* Full screen background */
+.success-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+/* Card in center */
+.success-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: pop 0.4s ease;
+}
+
+.success-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.success-card h1 {
+    margin-bottom: 10px;
+    color: #16a34a;
+}
+
+.success-card p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.success-card button {
+    padding: 10px 20px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.success-card button:hover {
+    background: #15803d;
+}
+
+/* animation */
+@keyframes pop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import './orders.css';
+import './style/orders.css';
 
 function Orders() {
 

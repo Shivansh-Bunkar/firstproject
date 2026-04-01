@@ -1,0 +1,150 @@
+/* =========================
+   VEG ITEMS GRID
+   ========================= */
+.veg-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+/* VEG ITEM CARD */
+.veg-item {
+    background: linear-gradient(rgba(19, 19, 19, 0.7), transparent),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiqHqWHfSLTfTsNRi8xqEjVRoegUZLy5BRUQ&s") no-repeat center/cover;
+
+    /* fresh, green palette */
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: center;
+}
+
+.veg-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* IMAGE */
+.veg-item img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* TITLE */
+.veg-item h2 {
+    font-size: 20px;
+    margin: 15px 10px 5px;
+    color: #2f6f4e;
+    /* fresh green for veg items */
+}
+
+/* PRICE */
+.veg-item p:first-of-type {
+    font-weight: bold;
+    color: #e63946;
+    /* red accent for price */
+    margin: 5px 0;
+}
+
+/* DESCRIPTION */
+.veg-item p:last-of-type {
+    font-size: 14px;
+    color: #374151;
+    padding: 0 15px 18px;
+    line-height: 1.5;
+}
+
+/* PAGE HEADING */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 32px;
+    color: #222;
+}
+
+/* ADD TO CART BUTTON */
+.veg-item button {
+    background: linear-gradient(135deg, #ff7a18, #ffb347);
+    /* appetizing gradient */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.veg-item button:hover {
+    background: linear-gradient(135deg, #ffb347, #ff7a18);
+    transform: translateY(-2px);
+}
+
+/* SPEC BUTTON CONTAINER */
+.spec-button {
+    display: flex;
+    justify-content: center;
+}
+
+.spec-button button {
+    background-color: #00c9a7;
+    /* matching accent */
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.spec-button button:hover {
+    background-color: #00a386;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   TOAST BOX
+   ========================= */
+.toast-box {
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #fff9f4;
+    /* light warm tone */
+    color: #111;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    animation: slideIn 0.3s ease;
+    z-index: 9999;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+@media screen and (max-width: 768px) {
+    .veg-items {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px;
+    }
+}

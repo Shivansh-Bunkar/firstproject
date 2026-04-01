@@ -1,0 +1,111 @@
+/* =========================
+   IMPROVED CONTACT STYLES
+   ========================= */
+
+.contact-container {
+    max-width: 500px;
+    margin: 80px auto;
+    /* More space from navbar */
+    padding: 40px;
+    /* More breathing room inside */
+    border: none;
+    /* Removed the heavy 2px border */
+    border-radius: 16px;
+    text-align: center;
+
+    /* Modernized Gradient with a slight glass effect */
+    background: linear-gradient(135deg, #a2a3a5 0%, #e0e7ff 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    /* Deep shadow for depth */
+
+    /* Animation when page loads */
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-container h2 {
+    color: #1a1a1a;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Even spacing between inputs */
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px 16px;
+    border: 2px solid transparent;
+    /* Invisible border until focus */
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #ffffff !important;
+    /* Force white background */
+    color: #333 !important;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* The "Magic" Focus State */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #646cff;
+    /* Matches your brand color */
+    box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.contact-form textarea {
+    resize: none;
+    /* Prevents user from breaking the layout */
+    font-family: inherit;
+}
+
+.contact-form button {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    background: #1a1a1a;
+    /* Sleek black */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+}
+
+.contact-form button:hover {
+    background: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form button:active {
+    transform: translateY(-1px);
+}
+
+/* Placeholder styling */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+    font-weight: 400;
+}

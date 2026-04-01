@@ -4,7 +4,6 @@ import Veg from "./Veg";
 import Nonveg from "./Nonveg";
 import Contact from "./Contact";
 import Cart from './cart';
-import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Footer from './Footer';
 import { Toaster } from 'react-hot-toast';
@@ -17,8 +16,13 @@ import Addition from './Addition';
 import RestaurantList from './RestaurantList';
 import BookingTable from './BookingTable';
 import About from './AboutUS';
+import Payment from './Payment';
+import BookingSuccess from './Booking-Success';
+import MIlk from './MIlk';
 
 function App() {
+
+
   return (
     <>
       <BrowserRouter>
@@ -33,6 +37,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Reastaurant" element={<RestaurantList />} />
+            <Route path="/MilkPage" element={<MIlk />} />
             <Route path="/Veg" element={<Veg />} />
             <Route path="/Nonveg" element={<Nonveg />} />
             <Route path="/Contact" element={<Contact />} />
@@ -44,6 +49,8 @@ function App() {
             <Route path="/Addition" element={<Addition />} />
             <Route path="/BookingTable" element={<BookingTable />} />
             <Route path="/AboutUs" element={<About />} />
+            <Route path="/Payment" element={<Payment />} />
+            <Route path="/success" element={<BookingSuccess />} />
 
           </Route>
 

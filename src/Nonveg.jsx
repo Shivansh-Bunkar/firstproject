@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './nonveg.css'
+import './style/nonveg.css'
 import { useDispatch } from "react-redux";
 import { addToCart } from "./CartSlice";
 import toast from 'react-hot-toast';

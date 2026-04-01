@@ -1,17 +1,19 @@
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const authMiddleware = require("../middleware/authMiddleware");
 
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, number } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.json({ message: "User already exists" });
         }
 
-        const user = await User.create({ name, email, password });
+        const user = await User.create({ name, email, password, number });
 
         res.json({ message: "Registered", user });
 
@@ -21,22 +23,47 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-    try {
-        const { email, password } = req.body;
+    const { email, password } = req.body;
 
-        // 1. Find the user by email
+    try {
         const user = await User.findOne({ email });
 
-        // 2. Check if user exists and password matches
-        // Note: Use bcrypt.compare() later if you hash passwords!
-        if (user && user.password === password) {
-            res.json({ message: "Login successful", user });
-        } else {
-            res.status(401).json({ message: "Invalid email or password" });
+        if (!user) {
+            return res.status(400).json({ message: "User not found" });
         }
 
+        if (user.password !== password) {
+            return res.status(400).json({ message: "Invalid password" });
+        }
+
+        // ✅ CREATE TOKEN
+        const token = jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
+        );
+
+        // ✅ SEND TOKEN + USER
+        res.json({
+            token,
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email
+            }
+        });
+
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+router.get("/me", authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select("-password");
+        res.json({ user }); // ✅ correct
+    } catch {
+        res.status(500).json({ message: "Server error" });
     }
 });
 

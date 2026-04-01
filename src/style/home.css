@@ -1,0 +1,150 @@
+/* =========================
+   BODY
+   ========================= */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+
+}
+
+/* HOME & FORM CONTAINER */
+.home,
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================
+   HOME SECTION CONTAINER
+   ========================= */
+.home {
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 20px;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(39, 38, 38, 0.7), rgba(0, 0, 0, 0.3)),
+        url("https://images.unsplash.com/photo-1557955776-857434f1c951?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+    background-size: cover;
+    /* full screen */
+    background-position: center;
+    /* center image */
+    background-repeat: no-repeat;
+    /* no repeat */
+    color: #0d141d;
+    width: auto;
+}
+
+
+/* MAIN HEADING */
+.home h1 {
+    font-size: 44px;
+    margin-bottom: 20px;
+    color: #b91c1c;
+    /* warm red for food branding */
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* SUBTITLE */
+.home p {
+    font-size: 18px;
+    color: #c7d7f3;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* =========================
+   HIGHLIGHT CARD
+   ========================= */
+.highlight-box {
+
+    background: linear-gradient(135deg, #b9b9b9, #f7f7f7);
+    /* soft, appetizing gradient */
+    max-width: 520px;
+    width: auto;
+    margin: 0 auto;
+    padding: 30px 28px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* H2 Styling */
+.highlight-box h2 {
+    text-align: center;
+    margin-bottom: 18px;
+    color: #b91c1c;
+    /* match heading red */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Emoji/Icon in H2 */
+.highlight-box h2 span.icon {
+    display: inline-block;
+    font-size: 28px;
+    transition: transform 0.3s ease;
+}
+
+.highlight-box h2:hover span.icon {
+    transform: scale(1.5);
+}
+
+/* Feature List */
+.highlight-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.highlight-box li {
+    padding: 10px 0;
+    font-size: 16px;
+    color: #b8babd;
+    border-bottom: 1px solid #ffe5d9;
+}
+
+.highlight-box li:last-child {
+    border-bottom: none;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+    .home {
+        padding: 40px 16px;
+    }
+
+    .home h1 {
+        font-size: 32px;
+    }
+
+    .home p {
+        font-size: 16px;
+    }
+
+    .highlight-box {
+        padding: 22px 18px;
+    }
+}
