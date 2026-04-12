@@ -51,7 +51,7 @@ function App() {
             <Route path="/AboutUs" element={<About />} />
             <Route path="/Payment" element={<Payment />} />
             <Route path="/success" element={<BookingSuccess />} />
-
+            <Route path="/google833c19b2e41d85d9" element={<google833c19b2e41d85d9 />} />
           </Route>
 
         </Routes>
