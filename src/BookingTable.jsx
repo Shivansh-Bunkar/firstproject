@@ -4,13 +4,15 @@ import { faTable, faStar } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import "./style/BookingTable.css";
+import { useDispatch } from "react-redux";
+import { addTableBooking } from "../Backend/TableBooking";
 
 const BookingTable = ({ loggedUser }) => {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
     const { restaurantId } = useParams();
     const selectedRestaurant = restaurantId;
-
+    const dispatch = useDispatch();
     const [people, setPeople] = useState(2);
     const [selectedTables, setSelectedTables] = useState([]);
     const [bookedTables, setBookedTables] = useState([]);
@@ -172,7 +174,7 @@ const BookingTable = ({ loggedUser }) => {
                             toast.error("Please login first!");
                             return;
                         }
-
+                        dispatch(addTableBooking());
                         navigate("/payment", {
                             state: { selectedTables, restaurantId: selectedRestaurant }
                         });

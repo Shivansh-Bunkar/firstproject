@@ -12,7 +12,7 @@
 /* VEG ITEM CARD */
 .veg-item {
     background: linear-gradient(rgba(19, 19, 19, 0.7), transparent),
-        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiqHqWHfSLTfTsNRi8xqEjVRoegUZLy5BRUQ&s") no-repeat center/cover;
+        url("https://png.pngtree.com/thumb_back/fw800/background/20220930/pngtree-green-fruit-and-vegetable-arrangement-on-a-green-background-in-a-creatively-designed-food-concept-photo-image_48785674.jpg") no-repeat center/cover;
 
     /* fresh, green palette */
     border-radius: 14px;
@@ -69,7 +69,7 @@ h1 {
 
 /* ADD TO CART BUTTON */
 .veg-item button {
-    background: linear-gradient(135deg, #ff7a18, #ffb347);
+    background: linear-gradient(135deg, #17412d, #d5eac0);
     /* appetizing gradient */
     color: white;
     border: none;
@@ -80,7 +80,7 @@ h1 {
 }
 
 .veg-item button:hover {
-    background: linear-gradient(135deg, #ffb347, #ff7a18);
+    background: linear-gradient(135deg, #d2c8b9, #debca3);
     transform: translateY(-2px);
 }
 

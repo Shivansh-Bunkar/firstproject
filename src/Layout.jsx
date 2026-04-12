@@ -81,7 +81,7 @@ function Layout() {
 
                     <div className="logo">
                         <Link to={loggedUser ? `/user/${loggedUser._id}` : "/AboutUs"}>
-                            <FontAwesomeIcon icon={faCrown} style={{ color: "darkcyan" }} />  Rasoi-Reserve
+                            <FontAwesomeIcon icon={faCrown} style={{ color: "darkcyan" }} /> RR
                         </Link>
                     </div>
 

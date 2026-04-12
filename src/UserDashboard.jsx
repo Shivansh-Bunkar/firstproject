@@ -13,7 +13,7 @@ function UserDashboard() {
     const location = useLocation();
     const loggedUser = location.state?.loggedUser;
     const items = useSelector(globalState => globalState.cart.items);
-
+    const booking = useSelector(globalState => globalState.tableBooking.tableBookings);
     const orders = useSelector(state => state.order);
     const userBookings = bookings.filter(
         b => Number(b.userId) === Number(loggedUser?.id)

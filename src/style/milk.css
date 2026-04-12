@@ -39,14 +39,14 @@
 .milk-item h2 {
     font-size: 20px;
     margin: 15px 10px 5px;
-    color: #2f6f4e;
+    color: #f7f8f7;
     /* fresh green for veg items */
 }
 
 /* PRICE */
 .milk-item p:first-of-type {
     font-weight: bold;
-    color: #e63946;
+    color: #d7d5d5;
     /* red accent for price */
     margin: 5px 0;
 }
@@ -54,7 +54,7 @@
 /* DESCRIPTION */
 .milk-item p:last-of-type {
     font-size: 14px;
-    color: #374151;
+    color: #e5e7e9;
     padding: 0 15px 18px;
     line-height: 1.5;
 }
